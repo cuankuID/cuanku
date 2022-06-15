@@ -2,8 +2,10 @@
 
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\DashboardSearchController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardProfileController;
 use App\Http\Controllers\DashboardTeamController;
+use App\Http\Controllers\EmailVerificationController;
 
 
 /*
@@ -31,8 +34,16 @@ use App\Http\Controllers\DashboardTeamController;
 |
 */
 
-// Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
+// Email Verification Routes
+Route::controller(EmailVerificationController::class)->group(function () {
+    Route::get('/email/verify', 'index')->middleware('auth')->name('verification.notice');
+    Route::post('/email/verification-notification', 'resend')->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
+    Route::get('/email/verify/{id}/{hash}', 'verify')->middleware(['auth', 'signed'])->name('verification.verify');
+});
+
+// Home Controller
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index');
 });
@@ -51,7 +62,7 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 // Dashboard Route
-Route::controller(DashboardController::class)->middleware('auth')->group(function (){
+Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function (){
     Route::get('/dashboard', 'index');
 });
 
@@ -72,7 +83,7 @@ Route::controller(DashboardUserController::class)->middleware('admin')->group(fu
 });
 
 // Dashboard Profile Route
-Route::controller(DashboardProfileController::class)->middleware('auth')->group(function () {
+Route::controller(DashboardProfileController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/profile', 'index');
     Route::put('/dashboard/profile/{user:username}', 'update');
     Route::get('/dashboard/profile/reset-password/{user:username}', 'editPassword');
@@ -80,7 +91,7 @@ Route::controller(DashboardProfileController::class)->middleware('auth')->group(
 });
 
 // Dashboard Consultation Route
-Route::controller(DashboardConsultationController::class)->middleware('user')->group(function () {
+Route::controller(DashboardConsultationController::class)->middleware(['user', 'verified'])->group(function () {
     Route::get('/dashboard/consultation', 'index');
     Route::get('/dashboard/consultation/create', 'create');
     Route::get('/dashboard/consultation/{orderConsultation:no_order}/edit', 'edit');
@@ -90,7 +101,7 @@ Route::controller(DashboardConsultationController::class)->middleware('user')->g
     Route::delete('/dashboard/consultation/done/{orderConsultation:no_order}', 'done');
 });
 
-Route::controller(DashboardOrderController::class)->middleware('consultant')->group(function () {
+Route::controller(DashboardOrderController::class)->middleware(['consultant', 'verified'])->group(function () {
     Route::get('/dashboard/order', 'index');
     Route::put('/dashboard/order/{orderConsultation:no_order}', 'getOrder');
     Route::get('/dashboard/active-order', 'activeOrder');
@@ -98,7 +109,7 @@ Route::controller(DashboardOrderController::class)->middleware('consultant')->gr
     Route::delete('/dashboard/active-order/{orderConsultation:no_order}', 'deleteOrder');
 });
 
-Route::controller(DashboardSearchController::class)->middleware('auth')->group(function () {
+Route::controller(DashboardSearchController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/search/json', 'jsonData');
     Route::get('/dashboard/search', 'index');
 });

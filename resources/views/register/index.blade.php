@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Cuanku | {{ $title }}')
+@section('title', 'Cuanku | Register')
 
 @section('content')
     <div id="app">
