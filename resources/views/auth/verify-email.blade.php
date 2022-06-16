@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Cuanku | Verify Email')
+@section('title', 'Cuanku | Forgot Password')
 
 @section('content')
 <div id="app">

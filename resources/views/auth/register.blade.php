@@ -61,10 +61,6 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                {{-- <div id="pwindicator" class="pwindicator"> --}}
-                                    {{-- <div class="bar"></div> --}}
-                                    {{-- <div class="label"></div> --}}
-                                {{-- </div> --}}
                             </div>
 
                             <div class="form-group col-6">

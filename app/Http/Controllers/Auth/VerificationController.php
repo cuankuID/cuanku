@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 
-class EmailVerificationController extends Controller
+class VerificationController extends Controller
 {
     public function index()
     {
-        return view('register.verify-email');
+        return view('auth.verify-email');
     }
 
     public function resend(Request $request)

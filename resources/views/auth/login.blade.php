@@ -12,6 +12,15 @@
                 <img src="../assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
                 </div>
 
+                @if(session()->has('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
                 @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
@@ -37,7 +46,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" autofocus>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autofocus>
                         @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -49,12 +58,12 @@
                         <div class="d-block">
                             <label for="password" class="control-label">Password</label>
                         <div class="float-right">
-                            <a href="auth-forgot-password.html" class="text-small">
+                            <a href="{{ route('password.request') }}" class="text-small">
                             Forgot Password?
                             </a>
                         </div>
                         </div>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" tabindex="2">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required tabindex="2">
                         @error('password')
                         <div class="invalid-feedback">
                             {{ $message }}

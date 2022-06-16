@@ -11,8 +11,9 @@
         <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a class="nav-link" href="/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
         @can('user', 'admin')
         <li class="menu-header">Service</li>
-        <li class="{{ Request::is('dashboard/consultation') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/consultation"><i class="fas fa-comments-dollar"></i> <span>Live Consultation</span></a></li>
-        <li class="{{ Request::is('dashboard/search') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/search"><i class="fas fa-search-dollar"></i></i> <span>Search Consultant Office</span></a></li>
+        <li class="{{ Request::is('dashboard/consultation') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/consultation"><i class="fas fa-user-tie"></i> <span>Live Konsultasi</span></a></li>
+        <li class="{{ Request::is('dashboard/search') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/search"><i class="fas fa-search-dollar"></i></i> <span>Cari Kantor Konsultan</span></a></li>
+        <li class="{{ Request::is('dashboard/search') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/search"><i class="fas fa-comments-dollar"></i> <span>Tanya Konsultan</span></a></li>
         @endcan
 
         @can('consultant', 'admin')
