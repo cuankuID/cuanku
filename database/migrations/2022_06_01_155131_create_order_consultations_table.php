@@ -15,10 +15,10 @@ class CreateOrderConsultationsTable extends Migration
     {
         Schema::create('order_consultations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('consultant_id')->nullable();
-            $table->foreignId('status_id');
-            $table->foreignId('category_id');
+            $table->foreignId('user_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('consultant_id')->nullable()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('status_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('category_id')->onUpdate('cascade')->onDelete('cascade');
             $table->string('no_order')->unique();
             $table->datetime('schedule');
             $table->text('problem')->nullable();

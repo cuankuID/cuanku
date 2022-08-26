@@ -16,8 +16,17 @@ class CreateConsultantOfficesTable extends Migration
         Schema::create('consultant_offices', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->double('long');
+            $table->string('slug');
+            $table->string('image')->nullable();
+            $table->text('information')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->foreignId('province_id');
+            $table->foreignId('city_id'); 
+            $table->string('full_address')->nullable();
             $table->double('lat');
+            $table->double('long');
             $table->timestamps();
         });
     }

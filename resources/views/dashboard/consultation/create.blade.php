@@ -43,6 +43,9 @@
                                 <div class="form-group">
                                     <label>Jadwal Konsultasi</label>
                                     <input name="schedule" type="datetime-local" class="datetime form-control" value="{{ old('schedule') }}">
+                                    <small class="form-text text-muted">
+                                        Pilih jadwal konsultasi minimal 24 jam dari waktu saat ini!
+                                    </small>
                                 </div>
 
                                 <div class="form-group">

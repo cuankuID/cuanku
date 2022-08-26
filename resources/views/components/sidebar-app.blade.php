@@ -1,38 +1,43 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-        <a href="index.html">Stisla</a>
+        <a href="/dashboard">
+        <img src="{{ asset('assets-app/img/cuanku-text-logo.jpg') }}" alt="" style="height: 52px;">
+        </a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-        <a href="index.html">St</a>
+        <img src="{{ asset('assets-app/img/cuanku-logo.png') }}" alt="" style="height: 52px;">
     </div>
     <ul class="sidebar-menu">
         <li class="menu-header">Dashboard</li>
         <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a class="nav-link" href="/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
         @can('user', 'admin')
         <li class="menu-header">Service</li>
-        <li class="{{ Request::is('dashboard/consultation') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/consultation"><i class="fas fa-user-tie"></i> <span>Live Konsultasi</span></a></li>
-        <li class="{{ Request::is('dashboard/search') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/search"><i class="fas fa-search-dollar"></i></i> <span>Cari Kantor Konsultan</span></a></li>
-        <li class="{{ Request::is('dashboard/search') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/search"><i class="fas fa-comments-dollar"></i> <span>Tanya Konsultan</span></a></li>
+        <li class="{{ Request::is(route('home.meet-consultant')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.meet-consultant') }}"><i class="fas fa-user-tie"></i> <span>Janji Temu Konsultan</span></a></li>
+        <li class="{{ Request::is(route('home.live-consultation')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.live-consultation') }}"><i class="fas fa-laptop-medical"></i> <span>Live Konsultasi</span></a></li>
+        <li class="{{ Request::is(route('index.search-office')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('index.search-office') }}"><i class="fas fa-search-dollar"></i></i> <span>Cari Kantor Konsultan</span></a></li>
+        <li class="{{ Request::is('dashboard/ask-consultant') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/ask-consultant"><i class="fas fa-comments-dollar"></i> <span>Tanya Konsultan</span></a></li>
         @endcan
 
         @can('consultant', 'admin')
         <li class="menu-header">Consultant</li>
         <li class="{{ Request::is('dashboard/order') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/order"><i class="fas fa-list"></i> <span>Order</span></a></li>
-        <li class="{{ Request::is('dashboard/active-order') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/active-order"><i class="fas fa-tasks"></i> <span>Active Order</span></a></li>
+        <li class="{{ Request::is('dashboard/create-meet-consultation-schedule') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/create-meet-consultation-schedule"><i class="fas fa-calendar-alt"></i> <span>Buat Jadwal Konsultasi</span></a></li>
+        <li class="{{ Request::is('dashboard/answer-question') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/answer-question"><i class="fas fa-comment-alt"></i> <span>Jawab Pertanyaan</span></a></li>
         @endcan
         
         @can('admin')
-        <li class="menu-header">Admin</li>
+        <li class="menu-header">Master</li>
         <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i> <span>All User</span></a>
             <ul class="dropdown-menu">
             <li class="{{ Request::is('dashboard/users') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/users">User</a></li>
-            <li><a class="nav-link" href="layout-transparent.html">Partner</a></li>
+            <li><a class="nav-link" href="{{ route('master.index.consultant') }}">Consultant</a></li>
             <li><a class="nav-link" href="/dashboard/teams">Team</a></li>
             </ul>
         </li>
         <li class="{{ Request::is('dashboard/posts') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/posts"><i class="far fa-newspaper"></i></i> <span>Post</span></a></li>
+        <li class="{{ Request::is(route('master.index.office-consultant')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('master.index.office-consultant') }}"><i class="fas fa-building"></i> <span>Kantor Konsultan</span></a></li>
         @endcan
         {{-- <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>

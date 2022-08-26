@@ -12,4 +12,24 @@ class ConsultantOffice extends Model
     protected $guarded = [
         'id'
     ];
+
+    protected $with = [
+        'province',
+        'city'
+    ];
+
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+    
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function infoConsultant()
+    {
+        return $this->belongsTo(infoConsultant::class);
+    }
 }

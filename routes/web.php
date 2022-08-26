@@ -11,6 +11,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Admin\AdminConsultantController;
+use App\Http\Controllers\Admin\AdminOfficeConsultantController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
@@ -21,7 +23,45 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardSearchController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardProfileController;
+use App\Http\Controllers\DashboardActivityController;
 use App\Http\Controllers\DashboardTeamController;
+use App\Http\Controllers\DashboardForumController;
+
+// Order Activity
+use App\Http\Livewire\Activity\IndexActivity;
+// Master Office
+use App\Http\Livewire\Master\ConsultantOffice\Create;
+use App\Http\Livewire\Master\IndexConsultantOffice;
+// Master Consultant
+use App\Http\Livewire\Master\Consultant\IndexConsultant;
+use App\Http\Livewire\Master\Consultant\CreateConsultant;
+use App\Http\Livewire\Master\Consultant\CreateMeetSchedule;
+// Search Office
+use App\Http\Livewire\SearchOffice\IndexSearchOffice;
+use App\Http\Livewire\SearchOffice\ShowSearchOffice;
+// Meet Consultant
+use App\Http\Livewire\MeetConsultant\HomeMeetConsultant;
+use App\Http\Livewire\MeetConsultant\IndexMeetConsultant;
+use App\Http\Livewire\MeetConsultant\ShowMeetConsultant;
+// Live Consultation
+use App\Http\Livewire\LiveConsultation\HomeLiveConsultation;
+use App\Http\Livewire\LiveConsultation\IndexLiveConsultation;
+use App\Http\Livewire\LiveConsultation\ModalInfoConsultant;
+use App\Http\Livewire\LiveConsultation\ShowLiveConsultation;
+// Order
+use App\Http\Livewire\Order\IndexOrder;
+// Create Order
+use App\Http\Livewire\CreateSchedule\CreateMeetConsultationSchedule;
+use App\Http\Livewire\CreateSchedule\CreateLiveConsultationSchedule;
+// Live Chat
+use App\Http\Livewire\LiveChat\Main;
+// Ask Consultant
+use App\Http\Livewire\AskConsultant\IndexAskConsultant;
+// Answer Question
+use App\Http\Livewire\AnswerQuestion\IndexAnswerQuestion;
+use App\Http\Livewire\AnswerQuestion\ShowAnswerQuestion;
+// Message Event
+use App\Events\Message; 
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +101,7 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 // Post Route
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 // Login Route
@@ -75,7 +115,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // Dashboard Route
 Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function (){
-    Route::get('/dashboard', 'index');
+    Route::get('/dashboard', 'index')->name('dashboard');
 });
 
 // Dashboard Post Route
@@ -102,6 +142,10 @@ Route::controller(DashboardProfileController::class)->middleware(['auth', 'verif
     Route::put('/dashboard/profile/reset-password/{user:username}', 'updatePassword');
 });
 
+// Dashboard Activity Controller
+Route::get('/dashboard/activity', IndexActivity::class)->middleware(['user', 'verified'])->name('index.activity');
+Route::get('/dashboard/activity/invoice-meet-consultation/{meetConsultationOrder:no_order}', [IndexActivity::class, 'invoice'])->middleware(['user', 'verified'])->name('invoice.activity');
+
 // Dashboard Consultation Route
 Route::controller(DashboardConsultationController::class)->middleware(['user', 'verified'])->group(function () {
     Route::get('/dashboard/consultation', 'index');
@@ -113,15 +157,68 @@ Route::controller(DashboardConsultationController::class)->middleware(['user', '
     Route::delete('/dashboard/consultation/done/{orderConsultation:no_order}', 'done');
 });
 
-Route::controller(DashboardOrderController::class)->middleware(['consultant', 'verified'])->group(function () {
-    Route::get('/dashboard/order', 'index');
-    Route::put('/dashboard/order/{orderConsultation:no_order}', 'getOrder');
-    Route::get('/dashboard/active-order', 'activeOrder');
-    Route::put('/dashboard/active-order/{orderConsultation:no_order}', 'finishOrder');
-    Route::delete('/dashboard/active-order/{orderConsultation:no_order}', 'deleteOrder');
-});
+// Route::controller(DashboardOrderController::class)->middleware(['consultant', 'verified'])->group(function () {
+//     Route::get('/dashboard/order', 'index');
+//     Route::put('/dashboard/order/{orderConsultation:no_order}', 'getOrder');
+//     Route::get('/dashboard/active-order', 'activeOrder');
+//     Route::put('/dashboard/active-order/{orderConsultation:no_order}', 'finishOrder');
+//     Route::delete('/dashboard/active-order/{orderConsultation:no_order}', 'deleteOrder');
+// });
 
 Route::controller(DashboardSearchController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/search/json', 'jsonData');
     Route::get('/dashboard/search', 'index');
 });
+
+// Admin Office Consultant Controller
+Route::get('/dashboard/master/consultant-office', IndexCOnsultantOffice::class)->middleware(['admin', 'verified'])->name('master.index.office-consultant');
+
+Route::controller(AdminOfficeConsultantController::class)->middleware(['admin', 'verified'])->group(function () {
+    Route::get('/dashboard/master/consultant-office/create', 'create')->name('master.create.office-consultant');
+    Route::get('/dashboard/master/office-consultant/edit/{consultantOffice:slug}', 'edit')->name('master.edit.office-consultant');
+    Route::put('/dashboard/master/office-consultant/update/{consultantOffice:slug}', 'update')->name('master.update.office-consultant');
+});
+
+// Search Consultant Office Route
+Route::get('/dashboard/search-office', IndexSearchOffice::class)->middleware(['user', 'verified'])->name('index.search-office');
+Route::get('/dashboard/search-office/{consultantOffice:slug}', ShowSearchOffice::class)->middleware(['user', 'verified'])->name('show.search-office');
+
+// Meet Consultant Route
+Route::get('/dashboard/meet-consultant', HomeMeetConsultant::class)->middleware(['user', 'verified'])->name('home.meet-consultant');
+Route::get('/dashboard/meet-consultant/search', IndexMeetConsultant::class)->middleware(['user', 'verified'])->name('index.meet-consultant');
+Route::get('/dashboard/meet-consultant/search/{infoConsultant:slug}', ShowMeetConsultant::class)->middleware(['user', 'verified'])->name('show.meet-consultant');
+
+// Live Konsultasi Route
+Route::get('/dashboard/live-consultation', HomeLiveConsultation::class)->middleware(['user', 'verified'])->name('home.live-consultation');
+Route::get('/dashboard/live-consultation/search', IndexLiveConsultation::class)->middleware(['user', 'verified'])->name('index.live-consultation');
+Route::get('/dashboard/live-consultation/{infoConsultant:slug}', ShowLiveConsultation::class)->middleware(['user', 'verified'])->name('show.live-consultation');
+
+// Live Chat Route
+Route::get('/dashboard/live-consultation/chat', Main::class)->middleware(['user', 'verified'])->name('chat.live-consultation');
+Route::post('/dashboard/live-consultation/chat', function(Request $request){
+    event(
+        new Message(
+            $request->input('name'), 
+            $request->input('message')
+            )
+    );
+});
+
+// Ask Consultant Route
+Route::get('/dashboard/ask-consultant', IndexAskConsultant::class)->middleware(['user', 'verified'])->name('index.ask-consultant');
+
+// Answer Question
+Route::get('/dashboard/answer-question', IndexAnswerQuestion::class)->middleware(['consultant', 'verified'])->name('index.answer-question');
+Route::get('/dashboard/answer-question/reply/{askConsultant}', ShowAnswerQuestion::class)->middleware(['consultant', 'verified'])->name('show.answer-question');
+
+// Order Route
+Route::get('/dashboard/order', IndexOrder::class)->middleware(['consultant', 'verified'])->name('index.order');
+
+// Create Schedule Route
+Route::get('/dashboard/create-meet-consultation-schedule', CreateMeetConsultationSchedule::class)->middleware(['consultant', 'verified'])->name('create.meet-consultation-schedule');
+Route::get('/dashboard/create-live-consultation-schedule', CreateLiveConsultationSchedule::class)->middleware(['consultant', 'verified'])->name('create.live-consultation-schedule');
+
+// Master Consultant Route
+Route::get('/dashboard/master/consultant', IndexConsultant::class)->middleware(['admin', 'verified'])->name('master.index.consultant');
+Route::get('/dashboard/master/consultant/create/{user:username}', CreateConsultant::class)->middleware(['admin', 'verified'])->name('master.create.consultant');
+Route::get('/dashboard/master/consultant/create-meet-schedule/{infoConsultant:slug}', CreateMeetSchedule::class)->middleware(['admin', 'verified'])->name('master.create-meet-schedule.consultant');

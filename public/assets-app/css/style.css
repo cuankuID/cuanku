@@ -101,7 +101,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
   background-color: #191d21 !important; }
 
 .text-primary, .text-primary-all *, .text-primary-all *:before, .text-primary-all *:after {
-  color: #6777ef !important; }
+  color: #25479e !important; }
 
 .text-secondary, .text-secondary-all *, .text-secondary-all *:before, .text-secondary-all *:after {
   color: #cdd3d8 !important; }
@@ -291,12 +291,12 @@ select.form-control:not([size]):not([multiple]) {
 .selectgroup-button {
   background-color: #fdfdff;
   border-color: #e4e6fc;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   display: block;
   text-align: center;
   padding: 0 1rem;
-  height: 35px;
+  height: 80px;
   position: relative;
   cursor: pointer;
   border-radius: 3px;
@@ -651,43 +651,43 @@ select.form-control:not([size]):not([multiple]) {
       color: #6777ef;
       padding-right: 10px;
       margin-bottom: 0; }
-      .card .card-header h4 + .card-header-action,
-      .card .card-header h4 + .card-header-form {
+      .card .card-header div + .card-header-action,
+      .card .card-header div + .card-header-form {
         margin-left: auto; }
-        .card .card-header h4 + .card-header-action .btn,
-        .card .card-header h4 + .card-header-form .btn {
+        .card .card-header div + .card-header-action .btn,
+        .card .card-header div + .card-header-form .btn {
           font-size: 12px;
           border-radius: 30px !important;
           padding-left: 13px !important;
           padding-right: 13px !important; }
-          .card .card-header h4 + .card-header-action .btn.active,
-          .card .card-header h4 + .card-header-form .btn.active {
+          .card .card-header div + .card-header-action .btn.active,
+          .card .card-header div + .card-header-form .btn.active {
             box-shadow: 0 2px 6px #acb5f6;
             background-color: #6777ef;
             color: #fff; }
-        .card .card-header h4 + .card-header-action .dropdown,
-        .card .card-header h4 + .card-header-form .dropdown {
+        .card .card-header div + .card-header-action .dropdown,
+        .card .card-header div + .card-header-form .dropdown {
           display: inline; }
-        .card .card-header h4 + .card-header-action .btn-group .btn,
-        .card .card-header h4 + .card-header-form .btn-group .btn {
+        .card .card-header div + .card-header-action .btn-group .btn,
+        .card .card-header div + .card-header-form .btn-group .btn {
           border-radius: 0 !important; }
-        .card .card-header h4 + .card-header-action .btn-group .btn:first-child,
-        .card .card-header h4 + .card-header-form .btn-group .btn:first-child {
+        .card .card-header div + .card-header-action .btn-group .btn:first-child,
+        .card .card-header div + .card-header-form .btn-group .btn:first-child {
           border-radius: 30px 0 0 30px !important; }
-        .card .card-header h4 + .card-header-action .btn-group .btn:last-child,
-        .card .card-header h4 + .card-header-form .btn-group .btn:last-child {
+        .card .card-header div + .card-header-action .btn-group .btn:last-child,
+        .card .card-header div + .card-header-form .btn-group .btn:last-child {
           border-radius: 0 30px 30px 0 !important; }
-        .card .card-header h4 + .card-header-action .input-group .form-control,
-        .card .card-header h4 + .card-header-form .input-group .form-control {
+        .card .card-header div + .card-header-action .input-group .form-control,
+        .card .card-header div + .card-header-form .input-group .form-control {
           border-radius: 30px 0 0 30px !important; }
-          .card .card-header h4 + .card-header-action .input-group .form-control + .input-group-btn .btn,
-          .card .card-header h4 + .card-header-form .input-group .form-control + .input-group-btn .btn {
+          .card .card-header div + .card-header-action .input-group .form-control + .input-group-btn .btn,
+          .card .card-header div + .card-header-form .input-group .form-control + .input-group-btn .btn {
             border-radius: 0 30px 30px 0 !important; }
-        .card .card-header h4 + .card-header-action .input-group .input-group-btn + .form-control,
-        .card .card-header h4 + .card-header-form .input-group .input-group-btn + .form-control {
+        .card .card-header div + .card-header-action .input-group .input-group-btn + .form-control,
+        .card .card-header div + .card-header-form .input-group .input-group-btn + .form-control {
           border-radius: 0 30px 30px 0 !important; }
-        .card .card-header h4 + .card-header-action .input-group .input-group-btn .btn,
-        .card .card-header h4 + .card-header-form .input-group .input-group-btn .btn {
+        .card .card-header div + .card-header-action .input-group .input-group-btn .btn,
+        .card .card-header div + .card-header-form .input-group .input-group-btn .btn {
           margin-top: -1px;
           border-radius: 30px 0 0 30px !important; }
   .card .card-footer {
@@ -1316,7 +1316,7 @@ h6 .badge {
 
 .btn-primary, .btn-primary.disabled {
   box-shadow: 0 2px 6px #acb5f6;
-  background-color: #6777ef;
+  background-color: #25479e;
   border-color: #6777ef; }
   .btn-primary:focus, .btn-primary.disabled:focus {
     background-color: #394eea !important; }
@@ -1537,7 +1537,7 @@ h6 .badge {
   left: 0;
   width: 100%;
   height: 115px;
-  background-color: #6777ef;
+  background-color: #25479e;
   z-index: -1; }
 
 .navbar {

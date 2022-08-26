@@ -2,7 +2,6 @@
     <form class="form-inline mr-auto">
     <ul class="navbar-nav mr-3">
         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
     </ul>
     {{-- <div class="search-element">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
@@ -201,7 +200,7 @@
             <a href="/dashboard/profile" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
             </a>
-            <a href="features-activities.html" class="dropdown-item has-icon">
+            <a href="{{ route('index.activity') }}" class="dropdown-item has-icon">
                 <i class="fas fa-bolt"></i> Activities
             </a>
             <a href="features-settings.html" class="dropdown-item has-icon">

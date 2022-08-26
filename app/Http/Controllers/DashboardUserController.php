@@ -12,7 +12,7 @@ class DashboardUserController extends Controller
     public function index(Request $request)
     {
         
-        return view('dashboard.users.index', [
+        return view('dashboard.admin.users.index', [
             'roles' => Role::all(),
             'users' => User::filter(request(['search']))->paginate(10)
         ]);

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class OrderConsultation extends Model
 {
@@ -52,5 +53,10 @@ class OrderConsultation extends Model
                             return $query->where('name', 'like', '%' . request()->get('search') . '%');
                         });
         });
+    }
+
+    public function getScheduleAttribute($datetime)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $datetime)->format('d-m-Y (H:i)');
     }
 }

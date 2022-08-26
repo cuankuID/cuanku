@@ -19,7 +19,7 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index', [
+        return view('dashboard.admin.post.index', [
             'posts' => Post::paginate(10)
         ]);
     }
@@ -31,7 +31,7 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create', [
+        return view('dashboard.admin.post.create', [
             'categories' => Category::all()
         ]);
     }
@@ -86,7 +86,7 @@ class DashboardPostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('dashboard.posts.edit', [
+        return view('dashboard.admin.post.edit', [
             'posts' => $post,
             'categories' => Category::all()
         ]);

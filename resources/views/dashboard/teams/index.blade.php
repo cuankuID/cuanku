@@ -20,7 +20,9 @@
             <div class="col-12 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Team Table</h4>
+                        <div>
+                            <h4>Team Table</h4>
+                        </div>
                         <div class="card-header-form">
                             <form action="/dashboard/teams">
                                 <div class="input-group">    

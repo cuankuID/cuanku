@@ -10,14 +10,14 @@ maxZoom: 20,
 subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
 }).addTo(map);
 
-$(document).ready(function() {
-    $.getJSON('/dashboard/search/json', function(data) {
-        $.each(data, function(index) {
-            L.marker([data[index].lat, data[index].long]).addTo(map).bindPopup(data[index].name)
-            .openPopup();
-        });
-    });
-});
+// $(document).ready(function() {
+//     $.getJSON('/dashboard/search/json', function(data) {
+//         $.each(data, function(index) {
+//             L.marker([data[index].lat, data[index].long]).addTo(map).bindPopup(data[index].name)
+//             .openPopup();
+//         });
+//     });
+// });
 
 // $(function(){
     // $.ajax({
