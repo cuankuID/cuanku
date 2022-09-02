@@ -7,13 +7,13 @@
     <div class="container pt-10 pt-md-14 pb-14 pb-md-16 text-center">
         <div class="row gx-lg-8 gx-xl-12 gy-10 gy-xl-0 mb-14 align-items-center">
             <div class="col-lg-6 order-lg-2">
-            <figure><img class="img-auto" src="{{ asset('assets/img/illustrations/i21.png') }}" srcset="./assets/img/illustrations/i21@2x.png 2x" alt="" /></figure>
+            <figure><img class="img-auto mr-5" src="{{ asset('assets/img/hero-img.jpg') }}" srcset="./assets/img/illustrations/i21@2x.png 2x" alt="" /></figure>
             </div>
             <!-- /column -->
             <div class="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start">
             <h1 class="display-1 fs-54 mb-5 mx-md-n5 mx-lg-0 mt-7">Dapatkan Pelayanan <br class="d-md-none"><span class="rotator-fade text-primary">Finansial, Pajak, Investasi</span> Terbaik Dari Manapun</h1>
             <p class="lead fs-lg mb-7">“Your Finance Solution with Cuan.ku Indonesia”</p>
-            <span><a class="btn btn-lg btn-primary rounded-pill me-2">Get Started</a></span>
+            {{-- <span><a class="btn btn-lg btn-primary rounded-pill me-2">Get Started</a></span> --}}
             </div>
             <!-- /column -->
         </div>
@@ -33,7 +33,7 @@
         <div class="row text-center">
             <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <h2 class="fs-16 text-uppercase text-primary mb-3">Apa Layanan Kami?</h2>
-            <h3 class="display-3 mb-10 px-xxl-10">Kami menyediakan platform untuk mencari konsultan keuangan</h3>
+            <h3 class="display-3 mb-10 px-xxl-10">Cuan.ku menyediakan platform untuk mencari konsultan finansial bagi anda</h3>
             </div>
             <!-- /column -->
         </div>
@@ -41,30 +41,30 @@
         <div class="row gx-lg-8 gx-xl-12 gy-11 px-xxl-5 text-center d-flex align-items-end">
         <div class="col-lg-4">
             <div class="px-md-15 px-lg-3">
-                <figure class="mb-6"><img class="img-fluid" src="./assets/img/illustrations/i24.png" srcset="./assets/img/illustrations/i24@2x.png 2x" alt="" /></figure>
+                <figure class="mb-6"><img class="img-fluid" src="{{ asset('assets/img/illustrations/i9.png') }}" srcset="{{ asset('assets/img/illustrations/i9@2x.png 2x') }}" alt="" /></figure>
                 <h3>Konsultasi Online</h3>
                 <p class="mb-2">Kami menyediakan layanan untuk berkonsultasi secara online dengan fitur <i>live chat</i></p>
-                <a href="#" class="more hover">Learn More</a>
+                <a href="/service" class="more hover">Learn More</a>
             </div>
             <!--/.px -->
         </div>
         <!--/column -->
         <div class="col-lg-4">
             <div class="px-md-15 px-lg-3">
-                <figure class="mb-6"><img class="img-fluid" src="./assets/img/illustrations/i19.png" srcset="./assets/img/illustrations/i19@2x.png 2x" alt="" /></figure>
+                <figure class="mb-6"><img class="img-fluid" src="{{ asset('assets/img/illustrations/i11.png') }}" srcset="./assets/img/illustrations/i19@2x.png 2x" alt="" /></figure>
                 <h3>Konsultasi Langsung</h3>
                 <p class="mb-2">Kami menyediakan layanan bagi para pengguna kami untuk bisa menjadwalkan pertemuan konsultasi secara langsung</p>
-                <a href="#" class="more hover">Learn More</a>
+                <a href="/service" class="more hover">Learn More</a>
             </div>
             <!--/.px -->
         </div>
         <!--/column -->
         <div class="col-lg-4">
             <div class="px-md-15 px-lg-3">
-                <figure class="mb-6"><img class="img-fluid" src="./assets/img/illustrations/i18.png" srcset="./assets/img/illustrations/i18@2x.png 2x" alt="" /></figure>
+                <figure class="mb-6"><img class="img-fluid" src="{{ asset('assets/img/illustrations/i12.png') }}" srcset="./assets/img/illustrations/i18@2x.png 2x" alt="" /></figure>
                 <h3>Cari Kantor Konsultan</h3>
                 <p class="mb-2">Kami menyediakan layanan untuk mencari lokasi beserta info kantor konsultan yang tersedia di Indonesia</p>
-                <a href="#" class="more hover">Learn More</a>
+                <a href="/service" class="more hover">Learn More</a>
             </div>
             <!--/.px -->
         </div>
@@ -130,9 +130,10 @@
                             <h4 class="mb-1">{{ $team->name }}</h4>
                             <div class="meta mb-2">{{ $team->position }}</div>
                             <nav class="nav social justify-content-center text-center mb-0">
-                                <a href="#"><i class="uil uil-twitter"></i></a>
-                                <a href="#"><i class="uil uil-slack"></i></a>
-                                <a href="#"><i class="uil uil-linkedin"></i></a>
+                                {{-- <a href="#"><i class="uil uil-twitter"></i></a>
+                                <a href="#"><i class="uil uil-slack"></i></a> --}}
+                                <a href="{{ $team->linkedin }}" target="_blank"><i class="uil uil-linkedin"></i></a>
+                                {{-- <a href="#"><i class="uil uil-facebook"></i></a> --}}
                             </nav>
                         </div>
                         @endforeach

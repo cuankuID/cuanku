@@ -98,6 +98,10 @@ Route::controller(ResetPasswordController::class)->group(function () {
 // Home Controller
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index');
+    Route::get('/contact', 'contact');
+    Route::get('/about', 'about');
+    Route::get('/service', 'service');
+    Route::get('/team', 'team');
 });
 
 // Post Route

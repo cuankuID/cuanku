@@ -9,13 +9,12 @@
             <div class="col-md-4 col-lg-3">
             <div class="widget">
                 <img class="mb-4" src="{{ asset('assets/img/cuanku-full.png') }}" srcset="./assets/img/logo-light@2x.png 2x" alt="" />
-                <p class="mb-4">© 2022 Sandbox. <br class="d-none d-lg-block" />All rights reserved.</p>
+                <p class="mb-4">© 2022 Cuanku <br class="d-none d-lg-block" />All rights reserved.</p>
                 <nav class="nav social social-white">
-                <a href="#"><i class="uil uil-twitter"></i></a>
-                <a href="#"><i class="uil uil-facebook-f"></i></a>
-                <a href="#"><i class="uil uil-dribbble"></i></a>
-                <a href="#"><i class="uil uil-instagram"></i></a>
-                <a href="#"><i class="uil uil-youtube"></i></a>
+                <a href="https://twitter.com/cuankuid"><i class="uil uil-twitter"></i></a>
+                {{-- <a href="#"><i class="uil uil-facebook-f"></i></a> --}}
+                <a href="https://www.instagram.com/cuankuid/"><i class="uil uil-instagram"></i></a>
+                {{-- <a href="#"><i class="uil uil-youtube"></i></a> --}}
                 </nav>
                 <!-- /.social -->
             </div>
@@ -24,22 +23,22 @@
             <!-- /column -->
             <div class="col-md-4 col-lg-3">
             <div class="widget">
-                <h4 class="widget-title text-white mb-3">Get in Touch</h4>
-                <address class="pe-xl-15 pe-xxl-17">Moonshine St. 14/05 Light City, London, United Kingdom</address>
-                <a href="mailto:#">info@email.com</a><br /> 00 (123) 456 78 90
+                <h4 class="widget-title text-white mb-3">Kontak</h4>
+                <address class="pe-xl-15 pe-xxl-17">Jl. Ir. Sutami No.36, Kentingan, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126</address>
+                <a href="mailto:hello.cuankuid@gmail.com">hello.cuankuid@gmail.com</a><br /> 00 (123) 456 78 90
             </div>
             <!-- /.widget -->
             </div>
             <!-- /column -->
             <div class="col-md-4 col-lg-3">
             <div class="widget">
-                <h4 class="widget-title text-white mb-3">Learn More</h4>
+                <h4 class="widget-title text-white mb-3">Link Internal</h4>
                 <ul class="list-unstyled  mb-0">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Team Kami</a></li>
+                <li><a href="#">Layanan Kami</a></li>
+                <li><a href="#">Berita</a></li>
                 </ul>
             </div>
             <!-- /.widget -->

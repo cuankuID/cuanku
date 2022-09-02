@@ -7,7 +7,7 @@
         </div>
         <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
             <div class="offcanvas-header d-lg-none">
-            <h3 class="text-white fs-30 mb-0">Sandbox</h3>
+            <h3 class="text-white fs-30 mb-0">Cuan.ku</h3>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
@@ -19,18 +19,13 @@
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Tentang</a>
                 <ul class="dropdown-menu">
-                    <li class="nav-item"><a class="dropdown-item" href="./pricing.html">Tentang Kami</a></li>
-                    <li class="nav-item"><a class="dropdown-item" href="./onepage.html">Team Kami</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="/about">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="/team">Team Kami</a></li>
                 </ul>
                 </li>
 
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Layanan</a>
-                <ul class="dropdown-menu">
-                    <li class="nav-item"><a class="dropdown-item" href="./pricing.html">Konsultasi Online</a></li>
-                    <li class="nav-item"><a class="dropdown-item" href="./onepage.html">Konsultasi Langsung</a></li>
-                    <li class="nav-item"><a class="dropdown-item" href="./onepage.html">Cari Kantor Konsultan</a></li>
-                </ul>
+                <a class="nav-link" href="/service">Layanan</a>
                 </li>
 
                 <li class="nav-item">
@@ -38,21 +33,21 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                <a class="nav-link" href="#" data-bs-toggle="dropdown">Kontak</a>
+                <a class="nav-link" href="/contact">Kontak</a>
                 </li>
 
             </ul>
             <!-- /.navbar-nav -->
             <div class="offcanvas-footer d-lg-none">
                 <div>
-                <a href="mailto:first.last@email.com" class="link-inverse">info@email.com</a>
+                <a href="mailto:hello.cuankuid@gmail.com" class="link-inverse">hello.cuankuid@gmail.com</a>
                 <br /> 00 (123) 456 78 90 <br />
                 <nav class="nav social social-white mt-4">
                     <a href="#"><i class="uil uil-twitter"></i></a>
-                    <a href="#"><i class="uil uil-facebook-f"></i></a>
-                    <a href="#"><i class="uil uil-dribbble"></i></a>
+                    {{-- <a href="#"><i class="uil uil-facebook-f"></i></a> --}}
+                    {{-- <a href="#"><i class="uil uil-dribbble"></i></a> --}}
                     <a href="#"><i class="uil uil-instagram"></i></a>
-                    <a href="#"><i class="uil uil-youtube"></i></a>
+                    {{-- <a href="#"><i class="uil uil-youtube"></i></a> --}}
                 </nav>
                 <!-- /.social -->
                 </div>

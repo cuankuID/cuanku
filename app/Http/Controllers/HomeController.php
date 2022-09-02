@@ -15,4 +15,26 @@ class HomeController extends Controller
             'posts' => Post::take(3)->get()
         ]);
     }
+
+    public function contact()
+    {
+        return view('home.contact');
+    }
+
+    public function about()
+    {
+        return view('home.about');
+    }
+
+    public function service()
+    {
+        return view('home.service');
+    }
+
+    public function team()
+    {
+        return view('home.team', [
+            'teams' => Team::all()
+        ]);
+    }
 }
