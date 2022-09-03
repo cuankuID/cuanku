@@ -96,7 +96,7 @@
                 <p class="lead fs-lg pe-lg-5">Kami menggunakan platform yang kami punya untuk menjalankan bisnis kami.</p>
                 <p>Cuanku.id Indonesia menyediakan 3 layanan yang dapat digunakan oleh para user. Beberapa layanan kami : Cari Kantor Konsultan, Konsultasi Online, Konsultasi Langsung</p>
                 <p class="mb-6"></p>
-                <a href="#" class="btn btn-primary rounded-pill mb-0">Selengkapnya</a>
+                <a href="/about" class="btn btn-primary rounded-pill mb-0">Selengkapnya</a>
             </div>
         </div>
     </div>

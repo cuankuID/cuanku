@@ -2,7 +2,7 @@
     <div class="container flex-lg-row flex-nowrap align-items-center">
         <div class="navbar-brand w-100">
             <a href="/">
-                <img src="{{ asset('assets/img/cuanku-full.png') }}" width="172" srcset="./assets/img/logo-dark@2x.png 2x" alt="" />
+                <img src="{{ asset('assets/img/cuanku-full.png') }}" width="172" srcset="{{ asset('assets/img/cuanku-full.png') }}" alt="" />
             </a>
         </div>
         <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">

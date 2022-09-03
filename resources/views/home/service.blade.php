@@ -22,10 +22,10 @@
                 <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
                 <div class="overlap-grid overlap-grid-2">
                     <div class="item">
-                        <figure class="rounded shadow"><img src="./assets/img/photos/live-consultation.png" srcset="./assets/img/photos/about2@2x.jpg 2x" alt=""></figure>
+                        <figure class="rounded shadow d-none d-sm-block"><img src="{{ asset('assets/img/photos/live-consultation.png') }}" alt=""></figure>
                     </div>
                     <div class="item">
-                        <figure class="rounded shadow"><img src="./assets/img/photos/live-consultation-2.png" srcset="./assets/img/photos/about3@2x.jpg 2x" alt=""></figure>
+                        <figure class="rounded shadow"><img src="{{ asset('assets/img/photos/live-consultation-2.png') }}" alt=""></figure>
                     </div>
                 </div>
             </div>
@@ -50,10 +50,10 @@
                 <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
                 <div class="overlap-grid overlap-grid-2">
                     <div class="item">
-                        <figure class="rounded shadow"><img src="{{ asset('assets/img/photos/consultation.png') }}" srcset="./assets/img/photos/about2@2x.jpg 2x" alt=""></figure>
+                        <figure class="rounded shadow d-none d-sm-block"><img src="{{ asset('assets/img/photos/consultation.png') }}" alt=""></figure>
                     </div>
                     <div class="item">
-                        <figure class="rounded shadow"><img src="{{ asset('assets/img/photos/consultation-2.png') }}" srcset="./assets/img/photos/about3@2x.jpg 2x" alt=""></figure>
+                        <figure class="rounded shadow"><img src="{{ asset('assets/img/photos/consultation-2.png') }}" alt=""></figure>
                     </div>
                 </div>
             </div>
@@ -78,10 +78,10 @@
                 <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
                 <div class="overlap-grid overlap-grid-2">
                     <div class="item">
-                        <figure class="rounded shadow"><img src="./assets/img/photos/office-2.png" srcset="./assets/img/photos/about2@2x.jpg 2x" alt=""></figure>
+                        <figure class="rounded shadow d-none d-sm-block"><img src="{{ asset('assets/img/photos/office-2.png') }}" alt=""></figure>
                     </div>
                     <div class="item">
-                        <figure class="rounded shadow"><img src="./assets/img/photos/office.png" srcset="./assets/img/photos/about3@2x.jpg 2x" alt=""></figure>
+                        <figure class="rounded shadow"><img src="{{ asset('assets/img/photos/office.png') }}" alt=""></figure>
                     </div>
                 </div>
             </div>

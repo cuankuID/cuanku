@@ -23,7 +23,7 @@
                 <div class="position-relative">
                     <div class="shape rounded bg-soft-blue rellax d-md-block" data-rellax-speed="0" style="bottom: -0.75rem; right: -0.75rem; width: 98%; height: 98%; z-index:0"></div>
                     <div class="card">
-                        <figure class="card-img-top"><img class="img-fluid" src="{{ asset('storage/' . $team->image)}}" srcset="./assets/img/avatars/t1@2x.jpg 2x" alt="" /></figure>
+                        <figure class="card-img-top"><img class="img-fluid" src="{{ asset('storage/' . $team->image)}}" alt="" /></figure>
                         <div class="card-body px-6 py-5">
                             <h4 class="mb-1">{{ $team->name }}</h4>
                             <p class="mb-0">{{ $team->position }}</p>
