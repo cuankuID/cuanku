@@ -36,7 +36,7 @@
             @include('components.navbar-app')
 
             @include('components.sidebar-app')
-
+            
             @yield('content')
             {{-- {{ $slot }} --}}
         </div>

@@ -104,7 +104,7 @@
                 </div>
                 </div>
                 <div class="mt-5 text-muted text-center">
-                Belum punya akun? <a href="/register"> Daftar Sekarang</a>
+                {{-- Belum punya akun? <a href="#"> Daftar Sekarang</a> --}}
                 </div>
             </div>
             </div>
