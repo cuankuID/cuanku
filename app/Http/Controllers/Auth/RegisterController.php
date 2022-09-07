@@ -9,6 +9,7 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 
+use Ramsey\Uuid\Uuid;
 use App\Models\User;
 
 class RegisterController extends Controller

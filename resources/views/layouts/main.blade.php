@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/colors/sky.css') }}">
     <link rel="preload" href="{{ asset('assets/css/fonts/urbanist.css') }}" as="style" onload="this.rel='stylesheet'">
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="83888d02-cb44-48c6-aa74-8047717e7467";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </head>
 
 <body>

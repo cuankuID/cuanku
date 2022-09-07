@@ -8,6 +8,7 @@
         "php": "^7.3",
         "barryvdh/laravel-dompdf": "^2.0",
         "cviebrock/eloquent-sluggable": "^8.0",
+        "fakerphp/faker": "^1.9.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "itsgoingd/clockwork": "^5.1",
@@ -17,10 +18,11 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.10",
+        "munafio/chatify": "^1.5",
         "orangehill/iseed": "^3.0",
         "pusher/pusher-php-server": "^7.0",
-        "wire-elements/modal": "^1.0",
-        "fakerphp/faker": "^1.9.1"
+        "ramsey/uuid": "^4.2",
+        "wire-elements/modal": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

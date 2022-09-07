@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-12 col-md-12">
                                 <h6 class="text-primary">Coba Gratis 1x</h6>
-                                <a href="" class="btn btn-primary">Chat Konsultan</a>    
+                                <a href="/live-chat/{{ $infoConsultant->user->uuid }}" class="btn btn-primary">Chat Konsultan</a>    
                             </div>
                         </div>
                         <hr>
