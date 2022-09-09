@@ -24,7 +24,7 @@
         <li class="{{ Request::is('dashboard/order') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/order"><i class="fas fa-list"></i> <span>Order</span></a></li>
         <li class="{{ Request::is('dashboard/create-meet-consultation-schedule') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/create-meet-consultation-schedule"><i class="fas fa-calendar-alt"></i> <span>Buat Jadwal Konsultasi</span></a></li>
         <li class="{{ Request::is('dashboard/answer-question') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/answer-question"><i class="fas fa-comment-alt"></i> <span>Jawab Pertanyaan</span></a></li>
-        <li class="{{ Request::is('live-chat') ? 'active' : '' }}"><a class="nav-link" href="/live-chat"><i class="fas fa-comment-alt"></i> <span>Live Konsultasi</span></a></li>
+        <li class="{{ Request::is('live-chat') ? 'active' : '' }}"><a class="nav-link" href="/live-chat"><i class="fas fa-laptop-medical"></i> <span>Live Konsultasi</span></a></li>
         @endcan
         
         @can('admin')

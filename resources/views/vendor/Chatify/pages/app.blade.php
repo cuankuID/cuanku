@@ -13,7 +13,9 @@
                 </nav>
             </nav>
             {{-- Search input --}}
+            @can('consultant', 'admin')
             <input type="text" class="messenger-search" placeholder="Search" />
+            @endcan
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
                 <a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">

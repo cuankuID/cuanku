@@ -27,25 +27,6 @@ class DatabaseSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $this->call([
-            LocationsSeeder::class,
-            StatusConsultationTableSeeder::class,
-            CategoryConsultationTableSeeder::class,
-            SpecialistSeeder::class,
-        ]);
-
-        Role::create([
-            'name' => 'User'
-        ]);
-
-        Role::create([
-            'name' => 'Consultant'
-        ]);
-
-        Role::create([
-            'name' => 'Admin'
-        ]);
-
         PricingTier::create([
             'name' => 'Free',
             'price' => '0'
@@ -93,23 +74,18 @@ class DatabaseSeeder extends Seeder
 
         // Consultant::factory(10)->create();
 
-        Category::create([
-            'name' => 'Programming',
-            'slug' => 'programming'
-        ]);
-
-        Category::create([
-            'name' => 'Web Design',
-            'slug' => 'web-design'
-        ]);
-
         Post::factory(10)->create();
-
-        Team::factory(4)->create();
 
         OrderConsultation::factory(10)->create();
 
         ConsultantOffice::factory(20)->create();
+
         // $this->call(UsersTableSeeder::class);
+        $this->call(TeamsTableSeeder::class);
+        $this->call(ProvincesTableSeeder::class);
+        $this->call(CitiesTableSeeder::class);
+        $this->call(ConsultantSpecialistsTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
     }
 }

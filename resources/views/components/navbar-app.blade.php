@@ -196,15 +196,14 @@
         <img alt="image" src="{{ asset('assets-app/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
         <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div></a>
         <div class="dropdown-menu dropdown-menu-right">
-            <div class="dropdown-title">Logged in 5 min ago</div>
+            <div class="dropdown-title">
+                <small class="badge badge-info">{{ auth()->user()->role->name }}</small>
+            </div>
             <a href="/dashboard/profile" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
             </a>
             <a href="{{ route('index.activity') }}" class="dropdown-item has-icon">
                 <i class="fas fa-bolt"></i> Activities
-            </a>
-            <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Settings
             </a>
         </div>
         

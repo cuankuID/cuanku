@@ -74,7 +74,7 @@
     </div>
 </section>
 
-<section class="wrapper bg-light">
+<section class="wrapper bg-gray">
     <div class="container py-14 py-md-16">
         <h2 class="display-4 mb-3 text-center">Artikel Terbaru</h2>
         <p class="lead fs-lg mb-10 text-center px-md-16 px-lg-21 px-xl-0">Update info dan tips dari artikel terbaru tentang keuangan dari Cuanku</p>

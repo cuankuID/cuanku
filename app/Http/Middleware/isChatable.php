@@ -16,6 +16,7 @@ class isChatable
      */
     public function handle(Request $request, Closure $next)
     {
+        // || auth()->user()->access_chat_id !== $request->segment(2)
         if(auth()->guest() || auth()->user()->pricing_tier_id !== 2) {
             abort(403);
         }
