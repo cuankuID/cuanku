@@ -23,7 +23,6 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            @dump($infoConsultant->user->id)
                             <div class="col-12 col-md-12">
                                 <h6 class="text-primary">Coba Gratis 1x</h6>
                                 <button type="button" wire:click="updateAccess" class="btn btn-primary">Chat Konsultan</button>    
