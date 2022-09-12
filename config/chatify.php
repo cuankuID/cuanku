@@ -6,7 +6,7 @@ return [
     | Messenger display name
     |-------------------------------------
     */
-    'name' => env('CHATIFY_NAME', 'Cuanku'),
+    'name' => env('CHATIFY_NAME', 'Cuanku Chat'),
 
     /*
     |-------------------------------------
@@ -23,13 +23,13 @@ return [
     */
     'routes' => [
         'prefix' => env('CHATIFY_ROUTES_PREFIX', 'live-chat'),
-        'middleware' => env('CHATIFY_ROUTES_MIDDLEWARE', ['web','auth', 'chatable']),
-        'namespace' => env('CHATIFY_ROUTES_NAMESPACE', 'App\Http\Controllers\vendor\Chatify'),
+        'middleware' => env('CHATIFY_ROUTES_MIDDLEWARE', ['web','auth']),
+        'namespace' => env('CHATIFY_ROUTES_NAMESPACE', 'Chatify\Http\Controllers'),
     ],
     'api_routes' => [
         'prefix' => env('CHATIFY_API_ROUTES_PREFIX', 'chatify/api'),
         'middleware' => env('CHATIFY_API_ROUTES_MIDDLEWARE', ['api']),
-        'namespace' => env('CHATIFY_API_ROUTES_NAMESPACE', 'App\Http\Controllers\vendor\Chatify\Api'),
+        'namespace' => env('CHATIFY_API_ROUTES_NAMESPACE', 'Chatify\Http\Controllers\Api'),
     ],
 
     /*
@@ -43,7 +43,8 @@ return [
         'app_id' => env('PUSHER_APP_ID'),
         'options' => [
             'cluster' => env('PUSHER_APP_CLUSTER'),
-            'encrypted' => false,
+            'encrypted' => true,
+            'useTLS' => true,
         ],
     ],
 
