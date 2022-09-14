@@ -22,8 +22,8 @@ class CreateConsultantOfficesTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('website')->nullable();
-            $table->foreignId('province_id');
-            $table->foreignId('city_id'); 
+            $table->foreignId('province_id')->default(1);
+            $table->foreignId('city_id')->default(1); 
             $table->string('full_address')->nullable();
             $table->double('lat');
             $table->double('long');
