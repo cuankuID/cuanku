@@ -10,8 +10,8 @@ class IndexAnswerQuestion extends Component
 {
     use WithPagination;
 
-    public $status;
-    public $search;
+    public $status = 'Menunggu Jawaban';
+    public $search = null;
     
     protected $paginationTheme = 'bootstrap';
 
@@ -22,7 +22,8 @@ class IndexAnswerQuestion extends Component
     
     public function render()
     {
-        $questions = AskConsultant::where('status', $this->status)->latest()->paginate(10);
+        $questions = AskConsultant::where('status', $this->status)
+                                    ->where('question', 'like', '%'.$this->search.'%')->latest()->paginate(10);
 
         // $questions = ConsultantOffice::where('name', 'like', '%'.$this->search.'%')
         //             ->orWhereHas('city', function($query) {

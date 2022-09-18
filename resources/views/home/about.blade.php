@@ -3,7 +3,7 @@
 @section('title', 'Cuanku | Tentang Kami')
 
 @section('content')
-<section class="wrapper bg-primary">
+<section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-400 text-white" data-image-src="{{ asset('assets/img/photos/bg3.jpg') }}">
     <div class="container pt-10 pt-md-14 text-center">
         <div class="row">
             <div class="col-xl-6 mx-auto">
@@ -16,13 +16,13 @@
 </section>
 
 <section class="wrapper bg-light angled">
-    <div class="container py-14 py-md-16">
-        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
+    <div class="container py-7 py-md-10">
+        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-10 mb-md-10 align-items-center">
             <div class="col-lg-6 position-relative order-lg-2">
                 <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
                 <div class="overlap-grid overlap-grid-2">
                     <div class="item">
-                    <figure class="rounded shadow"><img src="./assets/img/photos/about2.jpg" srcset="./assets/img/photos/about2@2x.jpg 2x" alt=""></figure>
+                    <figure class="rounded shadow d-none d-sm-block"><img src="./assets/img/photos/about2.jpg" srcset="./assets/img/photos/about2@2x.jpg 2x" alt=""></figure>
                     </div>
                     <div class="item">
                     <figure class="rounded shadow"><img src="./assets/img/photos/about3.jpg" srcset="./assets/img/photos/about3@2x.jpg 2x" alt=""></figure>
@@ -37,7 +37,11 @@
                 <p class="mb-6">Kami menyediakan platform untuk bisa mempertemukan antara end-user dengan para ahli konsultan di bidang finansial untuk mereka dapat berkomunikasi dan memberikan solusi untuk masalah yang dihadapi oleh para end-user</p>
             </div>
         </div>
+    </div>
+</section>
 
+<section class="wrapper bg-gray angled upper-start">
+    <div class="container py-7 py-md-8">
         <div class="row mb-5">
             <div class="col-md-10 col-xl-8 col-xxl-7 mx-auto text-center">
                 <img src="./assets/img/icons/lineal/list.svg" class="svg-inject icon-svg icon-svg-md mb-4" alt="" />

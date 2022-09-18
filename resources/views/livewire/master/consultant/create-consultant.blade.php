@@ -110,14 +110,14 @@
                                     <div class="form-group col-md-4">
                                         <label for="selectOffice">Kantor Bekerja</label>
                                         <div wire:ignore>
-                                            <select class="form-control @error('office_id') is-invalid @enderror" id="selectOffice" required>
+                                            <select class="form-control @error('office') is-invalid @enderror" id="selectOffice" required>
                                                 <option value=""></option>
                                                 @foreach ($offices as $office)
                                                     <option value="{{ $office->id }}">{{ $office->name }}</option>
                                                 @endforeach
                                             </select>    
                                         </div>
-                                        @error('office_id') <span class="invalid-feedback">{{ $message }}</span> @enderror
+                                        @error('office') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                     </div>
             
                                     <div class="form-group col-md-6">
@@ -198,7 +198,7 @@
             $('#selectOffice').select2();
             $('#selectOffice').on('change', function (e) {
                 var item = $('#selectOffice').select2("val");
-                @this.set('office_id', item);
+                @this.set('office', item);
             });
         });
 

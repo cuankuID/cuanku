@@ -3,7 +3,7 @@
 @section('title', 'Cuanku | Layanan Kami')
 
 @section('content')
-<section class="wrapper bg-primary">
+<section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-400 text-white" data-image-src="{{ asset('assets/img/photos/bg3.jpg') }}">
     <div class="container pt-10 pt-md-14 text-center">
         <div class="row">
             <div class="col-xl-6 mx-auto">

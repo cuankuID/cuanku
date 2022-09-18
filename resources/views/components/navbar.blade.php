@@ -24,7 +24,7 @@
                 </ul>
                 </li>
 
-                <li class="nav-item dropdown">
+                <li class="nav-item">
                 <a class="nav-link" href="/service">Layanan</a>
                 </li>
 
@@ -36,6 +36,9 @@
                 <a class="nav-link" href="/contact">Kontak</a>
                 </li>
 
+                <li class="nav-item mt-6 d-lg-none">
+                    <a href="{{ route('login') }}" class="nav-link btn-block btn-sm btn-info text-center">Sign In</a>
+                </li>
             </ul>
             <!-- /.navbar-nav -->
             <div class="offcanvas-footer d-lg-none">

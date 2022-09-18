@@ -50,7 +50,8 @@ use App\Http\Livewire\LiveConsultation\ModalInfoConsultant;
 use App\Http\Livewire\LiveConsultation\ShowLiveConsultation;
 // Order
 use App\Http\Livewire\Order\IndexOrder;
-// Create Order
+use App\Http\Livewire\Order\IndexOrderLiveConsultation;
+// Create Schedule
 use App\Http\Livewire\CreateSchedule\CreateMeetConsultationSchedule;
 use App\Http\Livewire\CreateSchedule\CreateLiveConsultationSchedule;
 // Live Chat
@@ -60,6 +61,7 @@ use App\Http\Livewire\AskConsultant\IndexAskConsultant;
 // Answer Question
 use App\Http\Livewire\AnswerQuestion\IndexAnswerQuestion;
 use App\Http\Livewire\AnswerQuestion\ShowAnswerQuestion;
+use App\Http\Livewire\AnswerQuestion\EditAnswerQuestion;
 // Message Event
 use App\Events\Message; 
 
@@ -214,9 +216,11 @@ Route::get('/dashboard/ask-consultant', IndexAskConsultant::class)->middleware([
 // Answer Question
 Route::get('/dashboard/answer-question', IndexAnswerQuestion::class)->middleware(['consultant', 'verified'])->name('index.answer-question');
 Route::get('/dashboard/answer-question/reply/{askConsultant}', ShowAnswerQuestion::class)->middleware(['consultant', 'verified'])->name('show.answer-question');
+Route::get('/dashboard/answer-question/edit/{askConsultant}', EditAnswerQuestion::class)->middleware(['consultant', 'verified'])->name('edit.answer-question');
 
 // Order Route
 Route::get('/dashboard/order', IndexOrder::class)->middleware(['consultant', 'verified'])->name('index.order');
+Route::get('/dashboard/order-live-consultation', IndexOrderLiveConsultation::class)->middleware(['consultant', 'verified'])->name('index.order-live-consultation');
 
 // Create Schedule Route
 Route::get('/dashboard/create-meet-consultation-schedule', CreateMeetConsultationSchedule::class)->middleware(['consultant', 'verified'])->name('create.meet-consultation-schedule');

@@ -3,8 +3,10 @@
 namespace App\Http\Livewire\LiveConsultation;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 use App\Models\InfoConsultant;
 use App\Models\User;
+use App\Models\OrderLiveConsultation;
 
 class ShowLiveConsultation extends Component
 {
@@ -18,12 +20,21 @@ class ShowLiveConsultation extends Component
         return view('livewire.live-consultation.show-live-consultation')->extends('layouts.app');
     }
 
-    public function updateAccess()
+    public function orderConsultation()
     {
-        User::where('id', auth()->user()->id)
-        ->update(['access_chat_id' => $this->infoConsultant->user->id]);
+        $validatedData;
+        $validatedData['user_id'] = auth()->id();
+        $validatedData['consultant_id'] = $this->infoConsultant->consultant_id;
+        $validatedData['no_order'] = 'LC-' . $this->infoConsultant->consultant_id . auth()->id() . '-' . Str::random(5);
+        $validatedData['status'] = 'Menunggu';
 
-        return redirect()->to('live-chat/' . $this->infoConsultant->user->id);
-        // return redirect('live-chat/');
+        $order = OrderLiveConsultation::where('no_order', 'like', 'LC-' . $this->infoConsultant->consultant_id . auth()->id() . '%')->exists();
+
+        if($order) {
+            return redirect()->to('live-chat/' . $this->infoConsultant->user->id);
+        } else {
+            OrderLiveConsultation::create($validatedData);
+            return redirect()->to('live-chat/' . $this->infoConsultant->user->id);
+        };
     }
 }

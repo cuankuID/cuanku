@@ -69,14 +69,25 @@ class DatabaseSeeder extends Seeder
             'role_id' => 1,
             'pricing_tier_id' => 1,
         ]);
+        
+        infoConsultant::create([
+            'consultant_id' => 2,
+            'office_id' => 1,
+            'slug' => 'farras-arkan',
+            'province' => $faker->state(),
+            'city' => $faker->city(),
+            'full_address' => $faker->streetAddress(), 
+            'price' => '200000',
+            'specialist' => 'Konsultan Akuntansi',
+            'work_experience' => 5,
+            'biography' => '<p>' . implode('<p></p>', $faker->paragraphs(mt_rand(3,6))) . '</p>'
+        ]);
 
         User::factory(20)->has(infoConsultant::factory())->create();
 
         // Consultant::factory(10)->create();
 
         Post::factory(10)->create();
-
-        OrderConsultation::factory(10)->create();
 
         ConsultantOffice::factory(20)->create();
 

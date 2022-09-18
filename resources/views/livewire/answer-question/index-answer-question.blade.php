@@ -10,7 +10,6 @@
                         <select class="form-control-sm" wire:model="status">
                             <option value="Menunggu Jawaban">Belum Terjawab</option>
                             <option value="Terjawab">Terjawab</option>
-                            {{-- <option value="3">Three</option> --}}
                         </select>    
                     </div>
 
@@ -38,9 +37,13 @@
                                 <div class="text-time">{{ $question->created_at->diffForHumans() }}</div>
                                 <div class="media-description text-muted">{!! $question->question !!}</div>
                                 <div class="media-links">
-                                <a href="{{ route('show.answer-question', ['askConsultant' => $question->id]) }}" class="badge badge-primary text-white">Jawab Pertanyaan <i class="fas fa-angle-right"></i></a>
                                 {{-- <div class="bullet"></div>
                                 <a href="#">Edit</a> --}}
+                                @if ($question->status == 'Menunggu Jawaban')
+                                <a href="{{ route('show.answer-question', ['askConsultant' => $question->id]) }}" class="badge badge-primary text-white">Jawab Pertanyaan <i class="fas fa-angle-right"></i></a>
+                                @else
+                                <a href="{{ route('edit.answer-question', ['askConsultant' => $question->id]) }}" class="badge badge-warning text-white">Edit Jawaban <i class="fas fa-angle-right"></i></a>
+                                @endif
                                 <div class="bullet"></div>
                                 <a href="#" class="text-danger" wire:click="deleteQuestion({{ $question->id }})">Hapus</a>
                                 </div>

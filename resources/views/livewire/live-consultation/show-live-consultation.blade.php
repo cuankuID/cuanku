@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-12 col-md-12">
                                 <h6 class="text-primary">Coba Gratis 1x</h6>
-                                <button type="button" wire:click="updateAccess" class="btn btn-primary">Chat Konsultan</button>    
+                                <button type="button" wire:click="orderConsultation" class="btn btn-primary">Chat Konsultan</button>    
                             </div>
                         </div>
                         <hr>

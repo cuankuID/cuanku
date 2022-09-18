@@ -66,7 +66,10 @@ class CreateConsultant extends Component
         
         $validatedData['consultant_id'] = $this->user->id;
         $validatedData['slug'] = Str::slug($this->user->name, '-');
-        $validatedData['photo'] = $this->photo->store('consultant-photos');
+
+        if($validatedData['photo']){
+            $validatedData['photo'] = $this->photo->store('consultant-photos');
+        }
 
         InfoConsultant::create($validatedData);
 

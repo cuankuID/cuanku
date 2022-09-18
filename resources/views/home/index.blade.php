@@ -3,6 +3,7 @@
 @section('title', 'Cuanku | Home')
 
 @section('content')
+<div class="page-loader"></div>
 <section class="wrapper bg-light">
     <div class="container pt-10 pt-md-14 pb-14 pb-md-16 text-center">
         <div class="row gx-lg-8 gx-xl-12 gy-10 gy-xl-0 mb-14 align-items-center">
