@@ -30,6 +30,22 @@ class ConsultantOffice extends Model
 
     public function infoConsultant()
     {
-        return $this->belongsTo(infoConsultant::class);
+        return $this->hasMany(infoConsultant::class, 'office_id');
+    }
+
+    public function scopeDistance($query, $latitude, $longitude, $distance, $unit = "km")
+    {
+        $constant = $unit == "km" ? 6371 : 3959;
+        $haversine = "(
+            $constant * acos(
+                cos(radians(" .$latitude. "))
+                * cos(radians(`lat`))
+                * cos(radians(`long`) - radians(" .$longitude. "))
+                + sin(radians(" .$latitude. ")) * sin(radians(`lat`))
+            )
+        )";
+
+        $query->select('*')->selectRaw("$haversine AS distance");
+        // ->having("distance", "<=", $distance)
     }
 }

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InfoConsultant;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\InfoConsultant;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
-class infoConsultantController extends Controller
+class InfoConsultantController extends Controller
 {
     public function index()
     {
@@ -19,7 +21,7 @@ class infoConsultantController extends Controller
             'photo' => 'mimes:jpeg,png,svg,jpg',
             'province' => 'required',
             'city' => 'required',
-            'full_address' => '',
+            'address' => '',
             'price' => 'required|min:4',
             'specialist' => 'required',
             'work_experience' => 'required',
@@ -33,17 +35,18 @@ class infoConsultantController extends Controller
         $photoName = null;
         
         if($request->file('photo')){
-            $photoName = $request->file('photo')->getClientOriginalName() . '-' . time() . '.' . $request->file('cover')->extension();
+            $photoName = $request->file('photo')->getClientOriginalName() . '-' . time() . '.' . $request->file('photo')->extension();
             $request->file('photo')->move(public_path('imgUser'), $photoName);
         }
 
         InfoConsultant::Create([
             'consultant_id' => auth()->user()->id,
             'office_id' => $request->office_id,
+            'slug' => "Str",
             'photo' => $photoName,
             'province' => $request->province,
             'city' => $request->city,
-            'full_address' => $request->full_address,
+            'full_address' => $request->address,
             'price' => $request->price,
             'specialist' => $request->specialist,
             'work_experience' => $request->work_experience,
@@ -65,7 +68,7 @@ class infoConsultantController extends Controller
             'photo' => 'mimes:jpeg,png,svg,jpg',
             'province' => 'required',
             'city' => 'required',
-            'full_address' => '',
+            'address' => '',
             'price' => 'required|min:4',
             'specialist' => 'required',
             'work_experience' => 'required',
@@ -79,7 +82,7 @@ class infoConsultantController extends Controller
         $photoName = $infoConsultant->photo;
         
         if($request->file('photo')){
-            $photoName = $request->file('photo')->getClientOriginalName() . '-' . time() . '.' . $request->file('cover')->extension();
+            $photoName = $request->file('photo')->getClientOriginalName() . '-' . time() . '.' . $request->file('photo')->extension();
             $request->file('photo')->move(public_path('imgUser'), $photoName);
         }
 
@@ -87,7 +90,7 @@ class infoConsultantController extends Controller
             'photo' => $photoName,
             'province' => $request->province,
             'city' => $request->city,
-            'full_address' => $request->full_address,
+            'full_address' => $request->address,
             'price' => $request->price,
             'specialist' => $request->specialist,
             'work_experience' => $request->work_experience,

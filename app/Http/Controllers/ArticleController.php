@@ -14,9 +14,9 @@ class ArticleController extends Controller
         $this->middleware('auth:api');
     }
     
-    public function index()
+    public function index(Request $request)
     {
-        return Article::where('title', 'like', '%'.$request->search.'%')->orWhere('desc', 'like', '%'.$request->search.'%')->get();
+        return Article::with('user')->where('title', 'like', '%'.$request->search.'%')->orWhere('desc', 'like', '%'.$request->search.'%')->get();
     }
 
     public function store(Request $request)

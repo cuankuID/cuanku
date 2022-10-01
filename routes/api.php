@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Models\InfoConsultant;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ChMessageController;
+use App\Http\Controllers\InfoConsultantController;
 use App\Http\Controllers\ConsultantOfficeController;
+use App\Http\Controllers\MeetConsultantOrderController;
+use App\Http\Controllers\MeetConsultantScheduleController;
 
 
 Route::group(['middleware' => 'api'], function ($router) {
@@ -15,10 +18,16 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('change', [AuthController::class, 'change']);
         Route::post('logout', [AuthController::class, 'logout']);
         Route::post('refresh', [AuthController::class, 'refresh']);
-        Route::post('me', [AuthController::class, 'me']); 
+        Route::post('me', [AuthController::class, 'me']);
     });
     
     Route::apiResource('article', ArticleController::class);
     Route::apiResource('office', ConsultantOfficeController::class);
-    Route::apiResource('consultant', InfoConsultant::class);
+    Route::get('office/{name}', [ConsultantOfficeController::class, 'showByName']);
+    Route::apiResource('consultant', InfoConsultantController::class);
+    Route::apiResource('consultant-schedule', MeetConsultantScheduleController::class)->except(['index', 'show']);
+    Route::get('consultant-schedule/{id}', [MeetConsultantScheduleController::class, 'index']);
+    Route::apiResource('consultant-order', MeetConsultantOrderController::class);
+    Route::put('consultant-order/{id}', [MeetConsultantOrderController::class, 'paid']);
+    Route::apiResource('chat', ChMessageController::class);
 });

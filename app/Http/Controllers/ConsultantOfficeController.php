@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ConsultantOffice;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class ConsultantOfficeController extends Controller
 {
@@ -13,9 +15,10 @@ class ConsultantOfficeController extends Controller
         $this->middleware('auth:api');
     }
  
-    public function index()
-    {
-        return ConsultantOffice::get();
+    public function index(Request $request)
+    {   
+        // -7.55090, 110.861813,
+        return ConsultantOffice::where('name', 'like', '%'.$request->search.'%')->distance($request->lat, $request->long, 1000)->orderby("distance", "asc")->get();
     }
 
     public function store(Request $request)
@@ -39,18 +42,19 @@ class ConsultantOfficeController extends Controller
         $imageName = null;
         
         if($request->file('image')){
-            $imageName = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('cover')->extension();
+            $imageName = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->extension();
             $request->file('image')->move(public_path('imgUser'), $imageName);
         }
 
         ConsultantOffice::Create([
             'name' => $request->name,
+            'slug' => Str::slug($request->name, '-'),
             'image' => $imageName,
             'information' => $request->information,
             'phone' => $request->phone,
             'email' => $request->email,
             'website' => $request->website,
-            'address' => $request->address,
+            'full_address' => $request->address,
             'lat' => $request->lat,
             'long' => $request->long,
         ]);
@@ -60,7 +64,7 @@ class ConsultantOfficeController extends Controller
 
     public function show($id)
     {
-        return ConsultantOffice::where("id", $id)->get();
+        return ConsultantOffice::with('infoConsultant')->where("id", $id)->get();
     }
 
     public function update(Request $request, $id)
@@ -86,7 +90,7 @@ class ConsultantOfficeController extends Controller
         
         if($request->file('image')){
             File::delete(public_path("\imgUser\\").$imageName);
-            $imageName = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('cover')->extension();
+            $imageName = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->extension();
             $request->file('image')->move(public_path('imgUser'), $imageName);
         }
 
@@ -97,7 +101,7 @@ class ConsultantOfficeController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'website' => $request->website,
-            'address' => $request->address,
+            'full_address' => $request->address,
             'lat' => $request->lat,
             'long' => $request->long,
         ]);

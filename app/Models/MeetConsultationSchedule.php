@@ -19,6 +19,6 @@ class MeetConsultationSchedule extends Model
 
     public function infoConsultant()
     {
-        return $this->belongsTo(InfoConsultant::class);
+        return $this->belongsTo(InfoConsultant::class, 'consultant_id');
     }
 }

@@ -30,7 +30,7 @@ class AuthController extends Controller
 
     public function me()
     {
-        return response()->json(auth()->user());
+        return User::with('infoConsultant')->where("id", auth()->user()->id)->get();
     }
 
     public function logout()

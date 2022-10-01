@@ -19,7 +19,7 @@ class CreateMeetConsultationOrdersTable extends Migration
             $table->foreignId('consultant_id');
             $table->foreignId('customer_id');
             $table->dateTime('date');
-            $table->enum('status', ['Menunggu Pembayaran', 'Diterima']);
+            $table->enum('status', ['Menunggu Pembayaran', 'Diterima'])->default('Menunggu Pembayaran');
             $table->timestamps();
         });
     }
