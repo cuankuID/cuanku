@@ -48,32 +48,6 @@
                 </form>
             </div>
         </div>
-        {{-- <div class="row g-5">
-            @if(count($posts) != 0)
-            @foreach ($posts as $post)
-            <div class="col-md-4 col-sm-3">
-                <div class="card">
-                    <a href="/posts?category={{ $post->category->slug }}" class="position-absolute btn-sm btn-primary fw-bold">{{ $post->category->name }}</a>
-                    @if ($post->image_post)
-                    <div style="max-height: 500px; overflow:hidden">
-                        <img src="{{ asset('storage/' . $post->image_post) }}" class="card-img-top" alt="...">
-                    </div>
-                    @else
-                    <img src="https://source.unsplash.com/800x500?{{ $post->category->name }}" class="card-img-top" alt="...">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">By : {{ $post->user->name }} <p><small>{{ $post->created_at->diffForHumans() }}</small></p></h6>
-                        <p class="card-text">{{ $post->excerpt }}</p>
-                        <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read More...</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-            @else
-            <h2 class="text-center">No Post Found</h2>
-            @endif
-        </div> --}}
 
         <div class="blog grid grid-view">
             <div class="row isotope gx-md-8 gy-8 mb-8">
