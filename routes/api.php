@@ -23,7 +23,6 @@ Route::group(['middleware' => 'api'], function ($router) {
     
     Route::apiResource('article', ArticleController::class);
     Route::apiResource('office', ConsultantOfficeController::class);
-    Route::get('office/{name}', [ConsultantOfficeController::class, 'showByName']);
     Route::apiResource('consultant', InfoConsultantController::class);
     Route::apiResource('consultant-schedule', MeetConsultantScheduleController::class)->except(['index', 'show']);
     Route::get('consultant-schedule/{id}', [MeetConsultantScheduleController::class, 'index']);
