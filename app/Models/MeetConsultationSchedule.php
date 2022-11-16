@@ -9,12 +9,10 @@ class MeetConsultationSchedule extends Model
 {
     use HasFactory;
 
+    protected $table = 'meet_consultation_schedules';
+    
     protected $guarded = [
         'id'
-    ];
-
-    protected $with = [
-        'infoConsultant'
     ];
 
     public function infoConsultant()

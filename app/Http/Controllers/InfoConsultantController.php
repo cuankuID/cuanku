@@ -6,10 +6,16 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\InfoConsultant;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class InfoConsultantController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+    
     public function index()
     {
         return InfoConsultant::get();
@@ -35,8 +41,7 @@ class InfoConsultantController extends Controller
         $photoName = null;
         
         if($request->file('photo')){
-            $photoName = $request->file('photo')->getClientOriginalName() . '-' . time() . '.' . $request->file('photo')->extension();
-            $request->file('photo')->move(public_path('imgUser'), $photoName);
+            $photoName = $request->file('photo')->store('consultant-photos');
         }
 
         InfoConsultant::Create([
@@ -58,7 +63,7 @@ class InfoConsultantController extends Controller
 
     public function show($id)
     {
-        return InfoConsultant::where("id", $id)->get();
+        return InfoConsultant::with('meetConsultationSchedule')->where("id", $id)->get();
     }
 
     public function update(Request $request, $id)
@@ -82,8 +87,8 @@ class InfoConsultantController extends Controller
         $photoName = $infoConsultant->photo;
         
         if($request->file('photo')){
-            $photoName = $request->file('photo')->getClientOriginalName() . '-' . time() . '.' . $request->file('photo')->extension();
-            $request->file('photo')->move(public_path('imgUser'), $photoName);
+            Storage::delete($infoConsultant->photo);
+            $photoName = $request->file('photo')->store('consultant-photos');
         }
 
         $infoConsultant->update([
@@ -104,7 +109,7 @@ class InfoConsultantController extends Controller
     {
         $infoConsultant = InfoConsultant::Find($id);
         if ($infoConsultant->photo) {
-            File::delete(public_path("\imgUser\\").$infoConsultant->photo);    
+            Storage::delete($infoConsultant->photo);    
         }
         $infoConsultant->delete();
         return response()->json(['message' => 'Consultant Deleted Successfully']);

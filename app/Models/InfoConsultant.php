@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\ConsultantOffice;
+use App\Models\LiveConsultationSchedule;
+use App\Models\MeetConsultationSchedule;
 
 class InfoConsultant extends Model
 {

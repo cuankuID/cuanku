@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ConsultantOffice;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class ConsultantOfficeController extends Controller
@@ -42,8 +43,7 @@ class ConsultantOfficeController extends Controller
         $imageName = null;
         
         if($request->file('image')){
-            $imageName = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->extension();
-            $request->file('image')->move(public_path('imgUser'), $imageName);
+            $imageName = $request->file('image')->store('consultant-office-images');
         }
 
         ConsultantOffice::Create([
@@ -57,6 +57,8 @@ class ConsultantOfficeController extends Controller
             'full_address' => $request->address,
             'lat' => $request->lat,
             'long' => $request->long,
+            'province_id' => '1',
+            'city_id' => '1'
         ]);
 
         return response()->json(['message' => 'Office Added Successfully']);
@@ -89,9 +91,8 @@ class ConsultantOfficeController extends Controller
         $imageName = $consultantOffice->image;
         
         if($request->file('image')){
-            File::delete(public_path("\imgUser\\").$imageName);
-            $imageName = $request->file('image')->getClientOriginalName() . '-' . time() . '.' . $request->file('image')->extension();
-            $request->file('image')->move(public_path('imgUser'), $imageName);
+            Storage::delete($consultantOffice->image);
+            $imageName = $request->file('image')->store('consultant-office-images');
         }
 
         $consultantOffice->update([
@@ -113,7 +114,7 @@ class ConsultantOfficeController extends Controller
     {
         $consultantOffice = ConsultantOffice::Find($id);
         if ($consultantOffice->image) {
-            File::delete(public_path("\imgUser\\").$consultantOffice->image);    
+            Storage::delete($consultantOffice->image);    
         }
         $consultantOffice->delete();
         return response()->json(['message' => 'Office Deleted Successfully']);

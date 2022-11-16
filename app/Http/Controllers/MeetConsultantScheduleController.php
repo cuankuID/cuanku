@@ -15,7 +15,7 @@ class MeetConsultantScheduleController extends Controller
     
     public function index(Request $request, $id)
     {
-        return MeetConsultationSchedule::select('time')->where('consultant_id', $id)->Where('day', "LIKE" , "%".$request->day."%")->get();
+        return MeetConsultationSchedule::select('time')->where('consultant_id', $id)->where('day', "LIKE" , "%".$request->day."%")->get();
     }
 
     public function store(Request $request)

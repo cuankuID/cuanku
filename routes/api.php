@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ChMessageController;
 use App\Http\Controllers\InfoConsultantController;
 use App\Http\Controllers\ConsultantOfficeController;
@@ -21,7 +21,7 @@ Route::group(['middleware' => 'api'], function ($router) {
         Route::post('me', [AuthController::class, 'me']);
     });
     
-    Route::apiResource('article', ArticleController::class);
+    Route::apiResource('article', PostController::class);
     Route::apiResource('office', ConsultantOfficeController::class);
     Route::apiResource('consultant', InfoConsultantController::class);
     Route::apiResource('consultant-schedule', MeetConsultantScheduleController::class)->except(['index', 'show']);
