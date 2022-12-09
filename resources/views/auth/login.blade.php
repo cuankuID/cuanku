@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         @if ($errors->has('g-recaptcha-response'))
                             <span class="help-block">
                                 <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
@@ -87,7 +87,7 @@
                         @endif
                         {!! NoCaptcha::renderJs('id', false, 'recaptchaCallback') !!}
                         {!! NoCaptcha::display() !!}
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
