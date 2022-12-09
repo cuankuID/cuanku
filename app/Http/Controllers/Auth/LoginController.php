@@ -19,8 +19,7 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required'],
-            'g-recaptcha-response' => ['required', 'captcha']
+            'password' => ['required']
         ]);
 
         $email = $credentials['email'];
