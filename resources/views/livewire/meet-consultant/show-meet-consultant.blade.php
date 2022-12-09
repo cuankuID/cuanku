@@ -89,7 +89,7 @@
             </div>
             <div class="row">
                 <div class="fixed-bottom bg-white mb-0" style="box-shadow: 0px 0 7px rgba(77, 77, 77, 0.8); height: 60px;">
-                    <div class="row justify-content-end">
+                    <div class="row justify-content-center">
                         <div class="col-8 col-md-3">
                             @if ($time)
                             <div class="mt-1">
