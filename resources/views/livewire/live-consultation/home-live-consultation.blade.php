@@ -19,10 +19,10 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="{{ asset('assets/img/illustrations/Group 14.png') }}" alt="First slide">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/illustrations/Group14.png') }}" alt="First slide">
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('assets/img/illustrations/Group 17.png') }}" alt="Second slide">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/illustrations/Group17.png') }}" alt="Second slide">
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
@@ -57,19 +57,20 @@
                         </div>
                         <div class="card-body">
                             <div class="owl-carousel owl-theme" id="users-carousel">
-                                {{-- @foreach ($consultants as $consultant) --}}
+                                @foreach ($consultants as $consultant)
                                 <div>
                                     <div class="user-item">
                                         <img alt="image" src="{{ asset('assets-app/img/avatar/avatar-1.png') }}" class="img-fluid">
                                         <div class="user-details">
-                                            <div class="user-name"></div>
-                                            <div class="text-job text-muted"></div>
+                                            <div class="user-name">{{$consultant->user->name}}</div>
+                                            <div class="text-job text-muted">{{$consultant->specialist}}</div>
                                             <div class="user-cta">
-                                                <button class="btn btn-primary follow-btn" data-follow-action="alert('user1 followed');" data-unfollow-action="alert('user1 unfollowed');">Buat Janji</button>
+                                                <a href="{{ route('show.live-consultation', ['infoConsultant' => $consultant->slug]) }}" class="btn btn-primary">Buat Janji</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
