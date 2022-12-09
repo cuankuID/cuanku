@@ -25,11 +25,24 @@
             <div class="card profile-widget">
                 <div class="profile-widget-header">
                     <img alt="image" src="{{ asset('assets-app/img/avatar/avatar-1.png') }}" class="rounded-circle profile-widget-picture">
+                    <div class="profile-widget-items">
+                        <div class="profile-widget-item">
+                            <input type="file" class="btn btn-sm btn-outline-primary d-inline">
+                            <button class="btn btn-sm btn-outline-danger d-inline">Delete</button>
+                        </div>    
+                    </div>
                 </div>
                 <div class="profile-widget-description">
-                <div class="profile-widget-name">{{ auth()->user()->name }}</div>
-                <p><b> Username :</b> {{ auth()->user()->username }}</p>
-                <p><b> Email :</b> {{ auth()->user()->email }}</p>
+                    <div class="row">
+                        <div class="col-3 col-md-3">
+                            <p><b> Username </b></p>
+                            <p><b> Email </b></p>            
+                        </div>
+                        <div class="col-9 col-md-9">
+                            <p>: {{ auth()->user()->username }}</p>
+                            <p>: {{ auth()->user()->email }}</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-footer text-center">

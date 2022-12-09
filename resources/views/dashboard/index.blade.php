@@ -14,21 +14,20 @@
                     <p class="lead">Welcome to Cuanku, here we will help to provide advice and solutions for your financial problems</p>
                     <p><b>Let's Get Started!</b></p>
                     <div class="row mt-4 pb-0">
-                        <div class="col-md-4">
-                            <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-map-marker-alt"></i> Search Consultant Office</a>
+                        <div class="col">
+                            <a href="{{ route('index.meet-consultant') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-user-tie"></i> Konsultasi Langsung</a>
                         </div>
-                        <div class="col-md-4">
-                            <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-comments-dollar"></i> Live Consultation</a>
+                        <div class="col">
+                            <a href="{{ route('index.live-consultation') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-laptop-medical"></i> Konsultasi Online</a>
+                        </div>
+                        <div class="col">
+                            <a href="{{ route('index.search-office') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-building"></i> Cari Kantor Konsultan</a>
                         </div>
                     </div>
-                    {{-- <div class="mt-4"> --}}
-                    {{-- </div> --}}
                 </div>
             </div>
         </div>
 
     </section>
 </div>
-
-
 @endsection

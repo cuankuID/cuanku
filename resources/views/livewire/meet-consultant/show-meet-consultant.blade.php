@@ -1,3 +1,5 @@
+@section('title', 'Cuanku | ' . $infoConsultant->user->name)
+
 <div>
     <div class="main-content">
         <section class="section">
@@ -28,7 +30,7 @@
                                                             @if ($date->format('l') != 'Saturday' && $date->format('l') != 'Sunday')
                                                             <label class="selectgroup-item col-4 col-md-3 px-1">
                                                                 <input type="radio" name="date" wire:model="date" wire:click="resetTime" value="{{ $date->format('d-m-Y') }}" class="selectgroup-input">
-                                                                <span class="selectgroup-button shadow-sm">{{ $date->format('l, d F') }}</span>
+                                                                <span class="selectgroup-button shadow-sm overflow-hidden"><small>{{ $date->format('l, d F') }}</small></span>
                                                             </label>
                                                             @endif    
                                                             @endforeach

@@ -30,6 +30,8 @@ class ShowMeetConsultant extends Component
     public function render()
     { 
         $period = CarbonPeriod::create(Carbon::now(), Carbon::now()->add(6, 'day'));
+        $period->locale('id_ID');
+        // dd($period);
 
         $dateSelect = Carbon::create($this->date)->format('l');
 
@@ -55,9 +57,11 @@ class ShowMeetConsultant extends Component
         ]);
 
         $validatedData['date'] = Carbon::parse($this->date . ' ' . $this->time);
+        $validatedData['due_date'] = Carbon::parse(Carbon::now())->add(1, 'day')->toDateTimeString();
         $validatedData['no_order'] = Str::random(10);
         $validatedData['consultant_id'] = $this->infoConsultant->consultant_id;
         $validatedData['customer_id'] = auth()->user()->id;
+        $validatedData['price'] = $this->infoConsultant->price;
         
         MeetConsultationOrder::create($validatedData);
 

@@ -19,10 +19,14 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required']
+            'password' => ['required'],
+            'g-recaptcha-response' => ['required', 'captcha']
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $email = $credentials['email'];
+        $password = $credentials['password'];
+
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
             $request->session()->regenerate();
             
             return redirect()->intended('/dashboard');

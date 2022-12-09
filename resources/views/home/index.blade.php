@@ -4,19 +4,24 @@
 
 @section('content')
 <div class="page-loader"></div>
-<section class="wrapper bg-light">
-    <div class="container pt-10 pt-md-14 pb-14 pb-md-16 text-center">
+<img class="d-none d-sm-block" src="{{asset('assets/img/hero-img.jpg') }}" style="position: absolute; z-index:-1; right: 0; height: 100;">
+<section class="wrapper">
+    <div class="container pt-10 pt-md-14 pb-14 pb-md-16 text-center bg-none">
         <div class="row gx-lg-8 gx-xl-12 gy-10 gy-xl-0 mb-14 align-items-center">
-            <div class="col-lg-6 order-lg-2">
+            {{-- <div class="col-lg-6 order-lg-2" style="background-image: asset('assets/img/hero-img.jpg') }}">
             <figure><img class="img-auto mr-5 d-none d-sm-block" src="{{ asset('assets/img/hero-img.jpg') }}" alt="" /></figure>
-            </div>
+            </div> --}}
             <!-- /column -->
             <div class="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start">
             {{-- <div class="col-md-10 offset-md-1 offset-lg-0 col-lg-6 text-center text-lg-start" style="background-image: url(assets/img/hero-img.jpg);
             height: 300px"> --}}
             <h1 class="display-1 fs-54 mb-5 mx-md-n5 mx-lg-0 mt-7">Dapatkan Pelayanan <br class="d-md-none"><span class="rotator-fade text-primary">Finansial, Pajak, Investasi</span> Terbaik Dari Manapun</h1>
             <p class="lead fs-lg mb-7">“Your Finance Solution with Cuan.ku Indonesia”</p>
-            {{-- <span><a class="btn btn-lg btn-primary rounded-pill me-2">Get Started</a></span> --}}
+            @auth
+            <a href="/dashoard" class="btn btn-lg btn-primary rounded-pill me-2">Gabung Sekarang!</a>
+            @else
+            <a href="/register" class="btn btn-lg btn-primary rounded-pill me-2">Gabung Sekarang!</a>
+            @endauth
             </div>
             <!-- /column -->
         </div>

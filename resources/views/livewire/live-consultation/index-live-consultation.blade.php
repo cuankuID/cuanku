@@ -1,6 +1,4 @@
-@section('style')
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-@endsection
+@section('title', 'Cuanku | Konsultasi Online')
 
 <div>
     <div class="main-content">
@@ -61,12 +59,10 @@
                                 <span class="badge badge-secondary"><i class="fas fa-briefcase"></i> {{ $consultant->work_experience }}</span>    
                             </div>
                             <div class="col-3 col-md-3 col-sm-3">
-                                {{-- @dump($consultant->liveConsultationSchedule->day) --}}
                                 {{-- @if ($consultant->liveConsultationSchedule->start_time <= $currentTime && $currentTime <= $consultant->liveConsultationSchedule->end_time)
                                     
                                 @endif --}}
-                                <a href="{{ route('show.live-consultation', ['infoConsultant' => $consultant->slug]) }}" class="btn btn-sm btn-primary"><i class="fas fa-comments"></i> Chat</a>
-                                {{-- <a class="btn btn-sm btn-info" href="" wire:click="window.livewire.emitTo('live-consultation.modal-info-consultant', 'open', {{ $consultant->consultant_id }})">Info</a> --}}
+                                <a href="{{ route('show.live-consultation', ['infoConsultant' => $consultant->slug]) }}" class="btn btn-sm btn-primary"><i class="fas fa-comments"></i> Chat</a>    
                             </div>
                         </div>
                     </div>
@@ -76,32 +72,6 @@
         </div>
         </section>
     </div>
-
-    {{-- Modal --}}
-    <div wire:ignore>
-        <div class="modal fade" id="info-consultant-modal" tabindex="-1" role="dialog" aria-hidden="true">
-            <livewire:live-consultation.modal-info-consultant />
-        </div>
-    </div>
-    {{-- <div class="modal fade" id="modalInfo-{{ $idModal }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog m-0" role="document" >
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <script>
         window.onscroll = function(ev) {

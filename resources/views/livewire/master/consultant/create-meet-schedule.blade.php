@@ -1,3 +1,5 @@
+@section('title', 'Cuanku | Buat Jadwal Konsultasi Online')
+
 <div>
     <div class="main-content">
         <section class="section">

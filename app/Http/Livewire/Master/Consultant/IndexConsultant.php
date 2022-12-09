@@ -11,9 +11,14 @@ class IndexConsultant extends Component
 {
     use WithPagination;
 
-    public $search;
-
     protected $paginationTheme = 'bootstrap';
+    protected $listeners = [
+        'deleteConfirmed' => 'deleteInfoConsultant',
+        'refreshComponent' => '$refresh'
+    ];
+
+    public $delete_id;
+    public $search;
 
     public function updateSearch()
     {
@@ -32,5 +37,21 @@ class IndexConsultant extends Component
         return view('livewire.master.consultant.index-consultant', [
             'consultants' => $consultant
         ])->extends('layouts.app');
+    }
+    
+    public function deleteConfirmation($id)
+    {
+        $this->delete_id = $id;
+        $this->dispatchBrowserEvent('show-delete-confirmation');
+    }
+
+    public function deleteInfoConsultant()
+    {
+        $infoConsultant = InfoConsultant::where('consultant_id', $this->delete_id)->first();
+        
+        $infoConsultant->delete();
+
+        $this->dispatchBrowserEvent('deleted-confirmation');
+        return $this->emit('refreshComponent');
     }
 }

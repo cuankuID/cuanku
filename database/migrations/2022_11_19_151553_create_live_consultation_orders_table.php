@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMeetConsultationOrdersTable extends Migration
+class CreateLiveConsultationOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateMeetConsultationOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('meet_consultation_orders', function (Blueprint $table) {
+        Schema::create('live_consultation_orders', function (Blueprint $table) {
             $table->id();
             $table->string('no_order');
             $table->foreignId('consultant_id');
             $table->foreignId('customer_id');
-            $table->dateTime('date');
+            $table->string('tier');
             $table->dateTime('due_date');
             $table->integer('price');
             $table->enum('status', ['Menunggu Pembayaran', 'Diterima']);
@@ -33,6 +33,6 @@ class CreateMeetConsultationOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meet_consultation_orders');
+        Schema::dropIfExists('live_consultation_orders');
     }
 }

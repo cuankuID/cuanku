@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div>
-                            <a class="btn btn-primary" href="{{ route('master.create.office-consultant') }}"><i class="fas fa-plus"></i> Tambah Data</a>
+                            {{-- <a class="btn btn-primary" href="{{ route('master.create.office-consultant') }}"><i class="fas fa-plus"></i> Tambah Data</a> --}}
                         </div>
                         <div class="card-header-action">
                             <div class="input-group">
@@ -51,7 +51,7 @@
                                         <td>{{ $consultant->email }}</td>
                                         <td>
                                             @if ($consultant->infoConsultant)
-                                            <a href="" class="btn btn-sm btn-warning"><i class="fas fa-pen"></i> Biodata</a>
+                                            <a href="{{ route('master.create.consultant', ['user' => $consultant->username]) }}" class="btn btn-sm btn-warning"><i class="fas fa-pen"></i> Biodata</a>
                                             @else
                                             <a href="{{ route('master.create.consultant', ['user' => $consultant->username]) }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Biodata</a>
                                             @endif
@@ -86,3 +86,31 @@
         </section>
     </div>
 </div>
+
+@push('script')
+<script>
+    window.addEventListener('show-delete-confirmation', event => {
+        Swal.fire({
+        title: 'Apakah Anda yakin?',
+        text: "Tindakan ini akan menghapus data informasi dari konsultan ini!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Livewire.emit('deleteConfirmed')
+        }
+        })
+    })
+
+    window.addEventListener('deleted-confirmation', event => {
+        Swal.fire(
+            'Deleted!',
+            'This data has been deleted.',
+            'success'
+        )
+    })
+</script>
+@endpush

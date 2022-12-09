@@ -2,9 +2,30 @@
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-        
-        {{-- <link rel="stylesheet" href="{{ asset('assets-app/css/bootstrap.min.css') }}"> --}}
+        <style>
+            @font-face {
+                font-family: 'Inter';
+                src: url({{ storage_path('fonts\Inter-Regular.ttf') }}) format("truetype");
+                font-weight: 400; // use the matching font-weight here ( 100, 200, 300, 400, etc).
+                font-style: regular; // use the matching font-style here
+            }
+            body{
+                font-family: Inter, sans-serif;
+            }
 
+            .flexbox::after{
+                clear: both;
+                display: table;
+            }
+            .box-left{
+                float: left;
+                width: 50%;
+            }
+
+            .box-right{
+                float: right;
+            }
+        </style>
     </head>
     <body>
         <div class="section-body">
@@ -12,122 +33,100 @@
                 <div class="invoice-print">
                     <div class="row">
                     <div class="col-lg-12">
-                        <div class="invoice-title">
-                        <h2>Invoice</h2>
-                        <div class="invoice-number">Order #12345</div>
+                        <div class="flexbox" style="height: 10%;">
+                            <div class="box-left">
+                                <img src="https://i.ibb.co/6NtPSYM/cuanku-text-logo.jpg" alt="cuanku-text-logo" style="width:60%;"/>
+                            </div>
+                            <div class="box-left">
+                                <h2 style="padding-left: 35%">Invoice</h2>
+                                <p style="padding-left: 35%"><strong>Order ID</strong> : #{{$order->first()->no_order}}</p>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="row">
-                        <div class="col-md-6">
-                            <address>
-                            <strong>Billed To:</strong><br>
-                                Ujang Maman<br>
-                                1234 Main<br>
-                                Apt. 4B<br>
-                                Bogor Barat, Indonesia
-                            </address>
-                        </div>
-                        <div class="col-md-6 text-md-right">
-                            <address>
-                            <strong>Shipped To:</strong><br>
-                            Muhamad Nauval Azhar<br>
-                            1234 Main<br>
-                            Apt. 4B<br>
-                            Bogor Barat, Indonesia
-                            </address>
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-md-6">
-                            <address>
-                            <strong>Payment Method:</strong><br>
-                            Visa ending **** 4242<br>
-                            ujang@maman.com
-                            </address>
-                        </div>
-                        <div class="col-md-6 text-md-right">
-                            <address>
-                            <strong>Order Date:</strong><br>
-                            September 19, 2018<br><br>
-                            </address>
-                        </div>
+
+                        <hr style="margin: 20px 0px 20px 0px">
+
+                        <div class="flexbox" style="height: 10%">
+                            <div class="box-left">
+                                <strong>Tagihan Kepada:</strong><br>
+                                    {{ $customer }}<br><br>
+                                    <address>
+                                        1234 Main<br>
+                                        Apt. 4B<br>
+                                        Bogor Barat, Indonesia    
+                                    </address>
+                            </div>
+                            <div class="box-left" style="padding-left: 18%">
+                                <strong>Tanggal Order:</strong><br>
+                                {{ $orderDate }} WIB<br><br>
+
+                                <strong>Tanggal Jatuh Tempo:</strong><br>
+                                {{ $dueDate }} WIB<br><br>
+                            </div>
                         </div>
                     </div>
                     </div>
 
-                    <div class="row mt-4">
+                    <div class="row mt-4" style="width: 100%; margin-top: 50px">
                     <div class="col-md-12">
-                        <div class="section-title">Order Summary</div>
-                        <p class="section-lead">All items here cannot be deleted.</p>
                         <div class="table-responsive">
-                        <table class="table table-striped table-hover table-md">
-                            <tr>
-                            <th data-width="40">#</th>
-                            <th>Item</th>
-                            <th class="text-center">Price</th>
-                            <th class="text-center">Quantity</th>
-                            <th class="text-right">Totals</th>
+                        <table class="table table-striped table-hover table-md" style="width: 100%; border-collapse: collapse; border: 1px solid #ddd">
+                            <tr style="border: 1px solid #ddd">
+                            <th data-width="70" style="background-color: #25479E; color: white">#</th>
+                            <th style="background-color: #25479E; color: white; padding: 10px 0px 10px 0px;">Item</th>
+                            <th style="background-color: #25479E; color: white; padding: 10px 0px 10px 0px;">Harga</th>
+                            <th style="background-color: #25479E; color: white; padding: 10px 0px 10px 0px;">Jumlah</th>
+                            <th style="background-color: #25479E; color: white; padding: 10px 0px 10px 0px;">Total</th>
                             </tr>
                             <tr>
-                            <td>1</td>
-                            <td>Mouse Wireless</td>
-                            <td class="text-center">$10.99</td>
-                            <td class="text-center">1</td>
-                            <td class="text-right">$10.99</td>
-                            </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Keyboard Wireless</td>
-                            <td class="text-center">$20.00</td>
-                            <td class="text-center">3</td>
-                            <td class="text-right">$60.00</td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Headphone Blitz TDR-3000</td>
-                            <td class="text-center">$600.00</td>
-                            <td class="text-center">1</td>
-                            <td class="text-right">$600.00</td>
+                            <td style="padding: 10px 0px 10px 0px; border: 1px solid #ddd; vertical-align: middle; padding-left: 10px">1</td>
+                            <td style="padding: 10px 0px 10px 0px; border: 1px solid #ddd; vertical-align: middle; padding-left: 10px">
+                                Konsultasi Temu Langsung <br><br>
+                                <small>
+                                    Konsultan : {{ $consultant }}<br>
+                                    Lokasi : Kramat Jati, Jakarta Timur <br>
+                                    Waktu : {{ $date }} WIB<br>
+                                </small>
+                            </td>
+                            <td style="padding: 10px 0px 10px 0px; border: 1px solid #ddd; vertical-align: middle; padding-left: 10px">Rp {{ $order->first()->price }}</td>
+                            <td style="padding: 10px 0px 10px 0px; border: 1px solid #ddd; vertical-align: middle; padding-left: 10px">1</td>
+                            <td style="padding: 10px 0px 10px 0px; border: 1px solid #ddd; vertical-align: middle; padding-left: 10px">Rp {{ $order->first()->price }}</td>
                             </tr>
                         </table>
                         </div>
-                        <div class="row mt-4">
-                        <div class="col-lg-8">
-                            <div class="section-title">Payment Method</div>
-                            <p class="section-lead">The payment method that we provide is to make it easier for you to pay invoices.</p>
-                            <div class="d-flex">
-                            <div class="mr-2 bg-visa" data-width="61" data-height="38"></div>
-                            <div class="mr-2 bg-jcb" data-width="61" data-height="38"></div>
-                            <div class="mr-2 bg-mastercard" data-width="61" data-height="38"></div>
-                            <div class="bg-paypal" data-width="61" data-height="38"></div>
+                        <div class="flexbox" style="margin-top: 20px;">
+                            <div class="box-right" style="width: 15%">
+                                <div class="invoice-detail-item">
+                                <div class="invoice-detail-name">Subtotal</div>
+                                <div class="invoice-detail-value">Rp {{ $order->first()->price }}</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 text-right">
-                            <div class="invoice-detail-item">
-                            <div class="invoice-detail-name">Subtotal</div>
-                            <div class="invoice-detail-value">$670.99</div>
-                            </div>
-                            <div class="invoice-detail-item">
-                            <div class="invoice-detail-name">Shipping</div>
-                            <div class="invoice-detail-value">$15</div>
-                            </div>
-                            <hr class="mt-2 mb-2">
-                            <div class="invoice-detail-item">
-                            <div class="invoice-detail-name">Total</div>
-                            <div class="invoice-detail-value invoice-detail-value-lg">$685.99</div>
-                            </div>
+
+                        <hr class="mt-2 mb-2" style="width: 100%; margin-top: 60px">
+
+                        <div class="flexbox" style="height: 5%; background-color: #25479E; padding: 10px 0px 10px">
+                            <div class="box-right" style="width: 15%">
+                                <div class="invoice-detail-name" style="color: white"><strong>Total</strong></div>
+                                <div class="invoice-detail-value invoice-detail-value-lg" style="color: white">Rp {{ $order->first()->price }}</div>
+                            </div>    
                         </div>
+
+                        <hr>
+
+                        <div style="margin-top: 50px">
+                            <strong>Metode Pembayaran</strong>
+                            <p>Silahkan transfer ke rekening :</p>
+                            <p>XXXXXXXXXX BCA a/n PT.Cuanku</p>
+                        </div>
+
+                        <div style="margin-top: 50px">
+                            <address>
+                                <strong><small>*Keterangan</small></strong><br>
+                                <small>Harap lakukan pembayaran sebelum tanggal jatuh tempo, Order akan otomatis dibatalkan jika belum melakukan pembayaran melebihi tanggal jatuh tempo</small>    
+                            </address>
                         </div>
                     </div>
                     </div>
-                </div>
-                <hr>
-                <div class="text-md-right">
-                    <div class="float-lg-left mb-lg-0 mb-3">
-                    <button class="btn btn-primary btn-icon icon-left"><i class="fas fa-credit-card"></i> Process Payment</button>
-                    <button class="btn btn-danger btn-icon icon-left"><i class="fas fa-times"></i> Cancel</button>
-                    </div>
-                    <button class="btn btn-warning btn-icon icon-left"><i class="fas fa-print"></i> Print</button>
                 </div>
             </div>
         </div>

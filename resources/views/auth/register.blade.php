@@ -9,7 +9,7 @@
             <div class="row">
             <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
                 <div class="login-brand">
-                <img src="{{ asset('assets-app/img/cuanku-text-logo.jpg') }}" alt="logo" width="100" class="shadow-light rounded-circle">
+                <img src="{{ asset('assets-app/img/cuanku-text-logo.jpg') }}" alt="logo" width="150" class="shadow-light rounded-circle">
                 </div>
 
                 <div class="card card-primary">
@@ -89,9 +89,9 @@
                     </form>
                 </div>
                 </div>
-                {{-- <div class="simple-footer">
-                Copyright &copy; Stisla 2018
-                </div> --}}
+                <div class="simple-footer">
+                Copyright &copy; Cuanku 2022
+                </div>
             </div>
             </div>
         </div>

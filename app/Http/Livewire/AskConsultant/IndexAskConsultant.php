@@ -8,14 +8,22 @@ use App\Models\AskConsultant;
 class IndexAskConsultant extends Component
 {
     public $question;
+    public $search;
 
     protected $listeners = [
         'refreshComponent' => '$refresh'
     ];
 
+    public function updateSearch()
+    {
+        $search = $this->search;
+    }
+
     public function render()
     {
-        $questions = AskConsultant::latest()->paginate(10);
+        $questions = AskConsultant::where('question','like', '%'.$this->search.'%')
+                                    ->orWhere('answer','like', '%'.$this->search.'%')
+                                    ->latest()->paginate(10);
 
         return view('livewire.ask-consultant.index-ask-consultant', [
             'questions' => $questions
@@ -34,7 +42,7 @@ class IndexAskConsultant extends Component
         $this->reset('question');
 
         // session()->flash('success', 'Data berhasil ditambahkan!');
-        return $this->emit('refreshComponent');
+        return redirect('/dashboard/ask-consultant');
     }
 
     public function deleteQuestion($id)

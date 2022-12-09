@@ -1,8 +1,8 @@
+@section('title', 'Cuanku | ' . $consultantOffice->name)
+
 <div>
     <div class="main-content">
         <section class="section">
-
-        {{-- @include('components.header-app', ['title' => $consultantOffice->name]) --}}
         <div class="row">
             <div class="col-12 col-sm-12 col-lg-12">
                 <div class="card">
@@ -28,7 +28,13 @@
                         <div class="tab-pane fade show active" id="home5" role="tabpanel" aria-labelledby="home-tab5">
                             <div class="row">
                                 <div class="col-12 col-md-7 col-sm-7">
+                                    @if ($consultantOffice->image)
+                                    <div class="mx-auto">
+                                    <img class="img-fluid" src="{{ asset('storage/' . $consultantOffice->image) }}" style="width: 100%;height: 450px;object-fit: cover;object-position: center">
+                                    </div>
+                                    @else
                                     <img class="img-fluid" src="https://source.unsplash.com/600x400?hospital" alt="">
+                                    @endif
                                     <hr>
                                     <div class="mb-4">
                                         <h6 class="text-info"><i class="fas fa-info-circle"></i> Informasi Lainnya</h6>
@@ -80,7 +86,30 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="contact5" role="tabpanel" aria-labelledby="contact-tab5">
-                        Vestibulum imperdiet odio sed neque ultricies, ut dapibus mi maximus. Proin ligula massa, gravida in lacinia efficitur, hendrerit eget mauris. Pellentesque fermentum, sem interdum molestie finibus, nulla diam varius leo, nec varius lectus elit id dolor.
+                            <div class="row mb-2">
+                                <div class="col-md-1 col-3">
+                                    <span class="text-primary"><i class="fas fa-envelope"></i> Email </span>
+                                </div>
+                                <div class="col">
+                                    : <a href="mailto:{{$consultantOffice->email}}">{{$consultantOffice->email}}</a>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-1 col-3">
+                                    <span class="text-primary"><i class="fas fa-phone"></i> Telepon </span>
+                                </div>
+                                <div class="col">
+                                    : <span class="text-info">{{$consultantOffice->phone}}</span>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-1 col-3">
+                                    <span class="text-primary"><i class="fas fa-globe"></i> Website </span>
+                                </div>
+                                <div class="col">
+                                    : <a href="{{$consultantOffice->website}}" class="text-info">{{$consultantOffice->website}}</a>
+                                </div>
+                            </div>  
                         </div>
                     </div>
                     </div>

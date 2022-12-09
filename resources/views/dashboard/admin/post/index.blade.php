@@ -21,12 +21,15 @@
         <div class="row">
             <div class="col-12 col-md-12 col-sm-12">
                 <div class="card">
-
                     <div class="card-body p-0">
-                        <div class="row m-4">
-                            <a href="/dashboard/posts/create" class="btn btn-primary"><i class="fas fa-plus"></i>  Add Post</a>
+                        <div class="row justify-content-between">
+                            <div class="col-3">
+                                <a href="/dashboard/posts/create" class="btn btn-primary m-4"><i class="fas fa-plus"></i>  Tambah Post</a>
+                            </div>
+                            <div class="col-3">
+                                <a href="/dashboard/posts/create" class="btn btn-primary m-4"><i class="fas fa-plus"></i>  Tambah Kategori Post</a>
+                            </div>
                         </div>
-
                         <div class="table-responsive">
                             <table class="table table-striped table-md">
                                 <tr>

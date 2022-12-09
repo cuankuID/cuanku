@@ -1,8 +1,9 @@
+@section('title', 'Cuanku | Konsultasi Online')
 
 <div>
     <div class="main-content">
         <section class="section">
-        @include('components.header-app', ['title' => 'Live Konsultasi'])
+        @include('components.header-app', ['title' => 'Konsultasi Online'])
 
             <div class="row">
                 <div class="col-12 col-md-5 col-sm-5">
@@ -15,17 +16,13 @@
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
                                     <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="{{ asset('assets-app/img/news/img01.jpg') }}" alt="First slide">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/illustrations/Group 14.png') }}" alt="First slide">
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('assets-app/img/news/img07.jpg') }}" alt="Second slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('assets-app/img/news/img08.jpg') }}" alt="Third slide">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/illustrations/Group 17.png') }}" alt="Second slide">
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
@@ -38,6 +35,12 @@
                                 </a>
                             </div>
                             <hr>
+                            <p>Pada layanan ini anda dapat memilih konsultan yang sesuai dengan anda dan melakukan melakukan konsultasi secara online.</p>
+                            <p class="text-primary font-weight-bold">Tata cara :</p>
+                            <ul>
+                                <li>Pilih Konsultan yang sesuai dengan anda</li>
+                                <li>Selamat Konsultasi Online!</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

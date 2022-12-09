@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\AdminConsultantController;
 use App\Http\Controllers\Admin\AdminOfficeConsultantController;
+use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
@@ -29,6 +30,7 @@ use App\Http\Controllers\DashboardForumController;
 
 // Order Activity
 use App\Http\Livewire\Activity\IndexActivity;
+use App\Http\Livewire\Activity\PaymentMeetConsultation;
 // Master Office
 use App\Http\Livewire\Master\ConsultantOffice\Create;
 use App\Http\Livewire\Master\IndexConsultantOffice;
@@ -49,7 +51,7 @@ use App\Http\Livewire\LiveConsultation\IndexLiveConsultation;
 use App\Http\Livewire\LiveConsultation\ModalInfoConsultant;
 use App\Http\Livewire\LiveConsultation\ShowLiveConsultation;
 // Order
-use App\Http\Livewire\Order\IndexOrder;
+use App\Http\Livewire\Order\IndexOrderMeetConsultation;
 use App\Http\Livewire\Order\IndexOrderLiveConsultation;
 // Create Schedule
 use App\Http\Livewire\CreateSchedule\CreateMeetConsultationSchedule;
@@ -116,12 +118,13 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Register Route
-// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-// Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index')->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 // Dashboard Route
 Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function (){
     Route::get('/dashboard', 'index')->name('dashboard');
+    Route::get('/dashboard/list-subscription', 'subscription')->name('dashboard.list.subscription');
 });
 
 // Dashboard Post Route
@@ -140,6 +143,13 @@ Route::controller(DashboardUserController::class)->middleware('admin')->group(fu
     Route::put('/dashboard/users/{user:username}/edit-role', 'updateRole');
 });
 
+Route::controller(SubscriptionController::class)->middleware('admin')->group(function () {
+    Route::get('/dashboard/subscription', 'index')->name('dashboard.subscription');
+    Route::post('/dashboard/subscription', 'store')->name('dashboard.subscription.store');
+    Route::put('/dashboard/subscription/{subscription}', 'update')->name('dashboard.subscription.update');
+    Route::delete('/dashboard/subscription/{subscription}', 'destroy')->name('dashboard.subscription.destroy');
+});
+
 // Dashboard Profile Route
 Route::controller(DashboardProfileController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/profile', 'index');
@@ -151,6 +161,8 @@ Route::controller(DashboardProfileController::class)->middleware(['auth', 'verif
 // Dashboard Activity Controller
 Route::get('/dashboard/activity', IndexActivity::class)->middleware(['user', 'verified'])->name('index.activity');
 Route::get('/dashboard/activity/invoice-meet-consultation/{meetConsultationOrder:no_order}', [IndexActivity::class, 'invoice'])->middleware(['user', 'verified'])->name('invoice.activity');
+Route::get('/dashboard/activity/meet-consultation/pay/{meetConsultationOrder:no_order}', PaymentMeetConsultation::class)->middleware(['user', 'verified'])->name('pay.meet-consultation');
+
 
 // Dashboard Consultation Route
 Route::controller(DashboardConsultationController::class)->middleware(['user', 'verified'])->group(function () {
@@ -170,11 +182,6 @@ Route::controller(DashboardConsultationController::class)->middleware(['user', '
 //     Route::put('/dashboard/active-order/{orderConsultation:no_order}', 'finishOrder');
 //     Route::delete('/dashboard/active-order/{orderConsultation:no_order}', 'deleteOrder');
 // });
-
-Route::controller(DashboardSearchController::class)->middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard/search/json', 'jsonData');
-    Route::get('/dashboard/search', 'index');
-});
 
 // Admin Office Consultant Controller
 Route::get('/dashboard/master/consultant-office', IndexCOnsultantOffice::class)->middleware(['admin', 'verified'])->name('master.index.office-consultant');
@@ -206,7 +213,7 @@ Route::post('/dashboard/live-consultation/chat', function(Request $request){
         new Message(
             $request->input('name'), 
             $request->input('message')
-            )
+        )
     );
 });
 
@@ -219,7 +226,7 @@ Route::get('/dashboard/answer-question/reply/{askConsultant}', ShowAnswerQuestio
 Route::get('/dashboard/answer-question/edit/{askConsultant}', EditAnswerQuestion::class)->middleware(['consultant', 'verified'])->name('edit.answer-question');
 
 // Order Route
-Route::get('/dashboard/order', IndexOrder::class)->middleware(['consultant', 'verified'])->name('index.order');
+Route::get('/dashboard/order-meet-consultation', IndexOrderMeetConsultation::class)->middleware(['consultant', 'verified'])->name('index.order-meet-consultation');
 Route::get('/dashboard/order-live-consultation', IndexOrderLiveConsultation::class)->middleware(['consultant', 'verified'])->name('index.order-live-consultation');
 
 // Create Schedule Route
@@ -229,4 +236,5 @@ Route::get('/dashboard/create-live-consultation-schedule', CreateLiveConsultatio
 // Master Consultant Route
 Route::get('/dashboard/master/consultant', IndexConsultant::class)->middleware(['admin', 'verified'])->name('master.index.consultant');
 Route::get('/dashboard/master/consultant/create/{user:username}', CreateConsultant::class)->middleware(['admin', 'verified'])->name('master.create.consultant');
+Route::get('/dashboard/master/consultant/edit/{user:username}', CreateConsultant::class)->middleware(['admin', 'verified'])->name('master.edit.consultant');
 Route::get('/dashboard/master/consultant/create-meet-schedule/{infoConsultant:slug}', CreateMeetSchedule::class)->middleware(['admin', 'verified'])->name('master.create-meet-schedule.consultant');

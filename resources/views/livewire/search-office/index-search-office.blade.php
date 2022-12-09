@@ -1,3 +1,5 @@
+@section('title', 'Cuanku | Cari Kantor Konsultan')
+
 <div>
     <div class="main-content">
         <section class="section">
@@ -55,7 +57,11 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-4 col-md-2 col-sm-4">
+                                @if ($office->image)
+                                <img src="{{ asset('storage/' . $office->image) }}" alt="" style="width: 100%;width: 100px;object-fit: cover;object-position: center">
+                                @else
                                 <img src="https://source.unsplash.com/100x100?hospital" alt="">
+                                @endif
                             </div>
                             <div class="col-5 col-md-8 col-sm-4">
                                 <h6 class="text-primary">{{ $office->name }}</h6>

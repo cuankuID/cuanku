@@ -1,3 +1,5 @@
+@section('title', 'Cuanku | Janji Temu Konsultan')
+
 <div>
     <div class="main-content">
         <section class="section">
@@ -18,13 +20,13 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="{{ asset('assets-app/img/news/img01.jpg') }}" alt="First slide">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/illustrations/Group 14.png') }}" alt="First slide">
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('assets-app/img/news/img07.jpg') }}" alt="Second slide">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/illustrations/Group 15.png') }}" alt="Second slide">
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('assets-app/img/news/img08.jpg') }}" alt="Third slide">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/illustrations/Group 16.png') }}" alt="Third slide">
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
@@ -37,7 +39,13 @@
                                 </a>
                             </div>
                             <hr>
-
+                            <p>Pada layanan ini anda dapat memilih konsultan sesuai yang anda butuhkan dan melakukan penjadwalan untuk bertemu dan konsultasi secara langsung.</p>
+                            <p class="text-primary font-weight-bold">Tata cara :</p>
+                            <ul>
+                                <li>Pilih Konsultan yang sesuai dengan anda</li>
+                                <li>Pilih jadwal pertemuan yang sesuai dan tersedia dan lakukan pembayaran</li>
+                                <li>Bertemu dan Konsultasi</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -62,7 +70,7 @@
                                             <div class="user-name">{{ $consultant->user->name }}</div>
                                             <div class="text-job text-muted">{{ $consultant->specialist }}</div>
                                             <div class="user-cta">
-                                                <button class="btn btn-primary follow-btn" data-follow-action="alert('user1 followed');" data-unfollow-action="alert('user1 unfollowed');">Buat Janji</button>
+                                                <a href="{{ route('show.meet-consultant', ['infoConsultant' => $consultant->slug]) }}" class="btn btn-primary">Buat Janji</a>
                                             </div>
                                         </div>
                                     </div>

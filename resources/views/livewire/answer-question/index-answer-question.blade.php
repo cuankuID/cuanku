@@ -1,3 +1,5 @@
+@section('title', 'Cuanku | Jawab Pertanyaan')
+
 <div>
     <div class="main-content">
         <section class="section">
