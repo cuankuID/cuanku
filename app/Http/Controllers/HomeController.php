@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         return view('home.index', [
             'teams' => Team::all(),
-            'posts' => Post::take(3)->get()
+            'posts' => Post::take(3)->latest()->get()
         ]);
     }
 

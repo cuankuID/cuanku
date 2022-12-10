@@ -54,11 +54,20 @@
                 @foreach ($posts as $post)
                 <article class="item post col-md-4">
                     <div class="card">
-                        <figure class="card-img-top overlay overlay-1 hover-scale"><a href="/posts/{{ $post->slug }}"> <img src="./assets/img/photos/b4.jpg" alt="" /></a>
+                        @if ($post->image_post)
+                        <figure class="card-img-top overlay overlay-1 hover-scale"><a href="/posts/{{ $post->slug }}"> <img src="{{asset('storage/' . $post->image_post)}}" alt="" /></a>
                             <figcaption>
                                 <h5 class="from-top mb-0">Baca Selengkapnya</h5>
                             </figcaption>
                         </figure>
+                        @else
+                        <figure class="card-img-top overlay overlay-1 hover-scale"><a href="/posts/{{ $post->slug }}"> <img src="./assets/img/photos/b4.jpg" alt="" /></a>
+                            <figcaption>
+                                <h5 class="from-top mb-0">Baca Selengkapnya</h5>
+                            </figcaption>
+                        </figure>    
+                        @endif
+                        
                         <div class="card-body">
                             <div class="post-header">
                                 <div class="post-category text-line">

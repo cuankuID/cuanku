@@ -16,7 +16,7 @@
         <li class="{{ Request::is('dashboard/meet-consultant') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/meet-consultant"><i class="fas fa-user-tie"></i> <span>Janji Temu Konsultan</span></a></li>
         <li class="{{ Request::is('dashboard/live-consultation') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.live-consultation') }}"><i class="fas fa-laptop-medical"></i> <span>Konsultasi Online</span></a></li>
         <li class="{{ Request::is('dashboard/search-office') ? 'active' : '' }}"><a class="nav-link" href="{{ route('index.search-office') }}"><i class="fas fa-building"></i> <span>Cari Kantor Konsultan</span></a></li>
-        <li class="{{ Request::is('dashboard/ask-consultant') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/ask-consultant"><i class="fas fa-comments-dollar"></i> <span>Tanya Konsultan</span></a></li>
+        {{-- <li class="{{ Request::is('dashboard/ask-consultant') ? 'active' : '' }}"><a class="nav-link" href="/dashboard/ask-consultant"><i class="fas fa-comments-dollar"></i> <span>Tanya Konsultan</span></a></li> --}}
         @endcan
 
         @can('consultant', 'admin')

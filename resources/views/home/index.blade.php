@@ -90,11 +90,19 @@
                     @foreach ($posts as $post)
                     <div class="swiper-slide">
                         <article>
-                            <figure class="overlay overlay-1 hover-scale rounded mb-5"><a href="#"> <img src="./assets/img/photos/b4.jpg" alt="" /></a>
-                            <figcaption>
-                                <h5 class="from-top mb-0">Lihat Selengkapnya</h5>
-                            </figcaption>
+                            @if ($post->image_post)
+                            <figure class="card-img-top overlay overlay-1 hover-scale"><a href="/posts/{{ $post->slug }}"> <img src="{{asset('storage/' . $post->image_post)}}" alt="" /></a>
+                                <figcaption>
+                                    <h5 class="from-top mb-0">Baca Selengkapnya</h5>
+                                </figcaption>
                             </figure>
+                            @else
+                            <figure class="card-img-top overlay overlay-1 hover-scale"><a href="/posts/{{ $post->slug }}"> <img src="./assets/img/photos/b4.jpg" alt="" /></a>
+                                <figcaption>
+                                    <h5 class="from-top mb-0">Baca Selengkapnya</h5>
+                                </figcaption>
+                            </figure>    
+                            @endif
                             <div class="post-header">
                             <div class="post-category text-line">
                                 <a href="#" class="hover" rel="category">{{ $post->category->name }}</a>
