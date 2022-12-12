@@ -238,3 +238,8 @@ Route::get('/dashboard/master/consultant', IndexConsultant::class)->middleware([
 Route::get('/dashboard/master/consultant/create/{user:username}', CreateConsultant::class)->middleware(['admin', 'verified'])->name('master.create.consultant');
 Route::get('/dashboard/master/consultant/edit/{user:username}', CreateConsultant::class)->middleware(['admin', 'verified'])->name('master.edit.consultant');
 Route::get('/dashboard/master/consultant/create-meet-schedule/{infoConsultant:slug}', CreateMeetSchedule::class)->middleware(['admin', 'verified'])->name('master.create-meet-schedule.consultant');
+
+// Sitemap
+Route::get('/sitemap.xml', function () {
+    $sitemap->writeToFile(public_path('sitemap.xml'));
+});
