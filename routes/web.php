@@ -241,5 +241,5 @@ Route::get('/dashboard/master/consultant/create-meet-schedule/{infoConsultant:sl
 
 // Sitemap
 Route::get('/sitemap.xml', function () {
-    $sitemap->writeToFile(public_path('sitemap.xml'));
+    $sitemap->writeToFile('/home/u1608722/public_html/storage/');
 });
