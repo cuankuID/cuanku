@@ -26,7 +26,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-md-12">
-                                <button data-toggle="modal" data-target="#appModal" class="btn btn-primary">Chat Konsultan</button>    
+                                <a href="/chat/{{$infoConsultant->consultant_id}}" target="blank" class="btn btn-primary">Chat Konsultan</a>    
                             </div>
                         </div>
                         <hr>

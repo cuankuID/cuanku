@@ -11,7 +11,6 @@
                     <div class="card card-primary">
                         <div class="card-body">
                             <div class="row">
-
                                 <div class="col-12 col-md-7 col-sm-7">
                                     <img class="img-fluid" src="https://source.unsplash.com/600x400?profile" alt="">
                                     <hr>
@@ -71,7 +70,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <h6 class="text-primary">Lokasi</h6>
                                     <hr>
                                     <div class="card bg-primary">

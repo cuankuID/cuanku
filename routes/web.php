@@ -24,6 +24,7 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardSearchController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardProfileController;
+use App\Http\Controllers\DashboardCartController;
 use App\Http\Controllers\DashboardActivityController;
 use App\Http\Controllers\DashboardTeamController;
 use App\Http\Controllers\DashboardForumController;
@@ -65,7 +66,8 @@ use App\Http\Livewire\AnswerQuestion\IndexAnswerQuestion;
 use App\Http\Livewire\AnswerQuestion\ShowAnswerQuestion;
 use App\Http\Livewire\AnswerQuestion\EditAnswerQuestion;
 // Message Event
-use App\Events\Message; 
+use App\Events\Message;
+use App\Http\Controllers\Admin\OrderVerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,6 +118,9 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/auth/google', [LoginController::class, 'googleAuth'])->name('google.auth');
+Route::get('/auth/google/call-back', [LoginController::class, 'googleCallback'])->name('google.callback');
+
 
 // Register Route
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index')->middleware('guest');
@@ -125,6 +130,7 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function (){
     Route::get('/dashboard', 'index')->name('dashboard');
     Route::get('/dashboard/list-subscription', 'subscription')->name('dashboard.list.subscription');
+    Route::post('/dashboard/buy-subscription', 'buySubscription')->name('dashboard.buy.subscription');
 });
 
 // Dashboard Post Route
@@ -150,18 +156,39 @@ Route::controller(SubscriptionController::class)->middleware('admin')->group(fun
     Route::delete('/dashboard/subscription/{subscription}', 'destroy')->name('dashboard.subscription.destroy');
 });
 
+Route::controller(OrderVerificationController::class)->middleware('admin')->group(function () {
+    Route::get('/dashboard/admin/order-verification/subs', 'indexSubs')->name('index.subs.order.verif');
+    Route::put('/dashboard/admin/order-verification/subs/acc/{subscriptionOrder:order_id}', 'accSubsOrder')->name('acc.subs.order.verif');
+    Route::put('/dashboard/admin/order-verification/subs/reject/{subscriptionOrder:order_id}', 'rejectSubsOrder')->name('reject.subs.order.verif');
+    Route::get('/dashboard/admin/order-verification/meet-consultant', 'indexMeetConsultant')->name('index.meet.order.verif');
+    Route::put('/dashboard/admin/order-verification/meet-consultant/acc/{meetConsultationOrder:order_id}', 'accMeetOrder')->name('acc.meet.order.verif');
+    Route::put('/dashboard/admin/order-verification/meet-consultant/reject/{meetConsultationOrder:order_id}', 'rejectMeetOrder')->name('reject.meet.order.verif');
+});
+
 // Dashboard Profile Route
 Route::controller(DashboardProfileController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/profile', 'index');
-    Route::put('/dashboard/profile/{user:username}', 'update');
+    // Route::put('/dashboard/profile/{user:username}', 'update');
     Route::get('/dashboard/profile/reset-password/{user:username}', 'editPassword');
     Route::put('/dashboard/profile/reset-password/{user:username}', 'updatePassword');
 });
 
+// Dashboard Cart Route
+Route::controller(DashboardCartController::class)->middleware(['user', 'verified'])->group(function () {
+    Route::get('/dashboard/cart/subscription', 'cartSubscription')->name('index.subscription.cart');
+    Route::get('/dashboard/cart/subscription/history', 'historySubscription')->name('history.subscription.cart');
+    Route::get('/dashboard/cart/meet-consultation', 'cartMeetConsultation')->name('index.meet.cart');
+    Route::get('/dashboard/cart/meet-consultation/history', 'historyMeetConsultation')->name('history.meet.cart');
+    Route::delete('/dashboard/cart/subs/{subscriptionOrder:order_id}', 'deleteSubsOrder')->name('delete.subscription.order');
+    Route::delete('/dashboard/cart/meet/{meetConsultationOrder:order_id}', 'deleteMeetOrder')->name('delete.meet.order');
+    Route::put('/dashboard/cart/subs/pay-proof/{subscriptionOrder:order_id}', 'uploadSubsProof')->name('proof.subscription.order');
+    Route::put('/dashboard/cart/meet/pay-proof/{meetConsultationOrder:order_id}', 'uploadMeetProof')->name('proof.meet.order');
+});
+
 // Dashboard Activity Controller
-Route::get('/dashboard/activity', IndexActivity::class)->middleware(['user', 'verified'])->name('index.activity');
-Route::get('/dashboard/activity/invoice-meet-consultation/{meetConsultationOrder:no_order}', [IndexActivity::class, 'invoice'])->middleware(['user', 'verified'])->name('invoice.activity');
-Route::get('/dashboard/activity/meet-consultation/pay/{meetConsultationOrder:no_order}', PaymentMeetConsultation::class)->middleware(['user', 'verified'])->name('pay.meet-consultation');
+// Route::get('/dashboard/activity', IndexActivity::class)->middleware(['user', 'verified'])->name('index.activity');
+// Route::get('/dashboard/activity/invoice-meet-consultation/{meetConsultationOrder:no_order}', [IndexActivity::class, 'invoice'])->middleware(['user', 'verified'])->name('invoice.activity');
+// Route::get('/dashboard/activity/meet-consultation/pay/{meetConsultationOrder:no_order}', PaymentMeetConsultation::class)->middleware(['user', 'verified'])->name('pay.meet-consultation');
 
 
 // Dashboard Consultation Route
@@ -207,15 +234,15 @@ Route::get('/dashboard/live-consultation/search', IndexLiveConsultation::class)-
 Route::get('/dashboard/live-consultation/{infoConsultant:slug}', ShowLiveConsultation::class)->middleware(['user', 'verified'])->name('show.live-consultation');
 
 // Live Chat Route
-Route::get('/dashboard/live-consultation/chat', Main::class)->middleware(['user', 'verified'])->name('chat.live-consultation');
-Route::post('/dashboard/live-consultation/chat', function(Request $request){
-    event(
-        new Message(
-            $request->input('name'), 
-            $request->input('message')
-        )
-    );
-});
+// Route::get('/dashboard/live-consultation/chat', Main::class)->middleware(['user', 'verified'])->name('chat.live-consultation');
+// Route::post('/dashboard/live-consultation/chat', function(Request $request){
+//     event(
+//         new Message(
+//             $request->input('name'), 
+//             $request->input('message')
+//         )
+//     );
+// });
 
 // Ask Consultant Route
 Route::get('/dashboard/ask-consultant', IndexAskConsultant::class)->middleware(['user', 'verified'])->name('index.ask-consultant');

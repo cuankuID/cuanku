@@ -27,15 +27,8 @@ class DatabaseSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        PricingTier::create([
-            'name' => 'Free',
-            'price' => '0'
-        ]);
-
-        PricingTier::create([
-            'name' => 'Premium',
-            'price' => '50000'
-        ]);
+        $this->call(RolesTableSeeder::class);
+        $this->call(SubscriptionsTableSeeder::class);
 
         User::create([
             'uuid' => $faker->uuid(),
@@ -45,18 +38,18 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('Superadmin123'),
             'role_id' => 3,
-            'pricing_tier_id' => 2,
+            'subscription_id' => 3,
         ]);
 
         User::create([
             'uuid' => $faker->uuid(),
             'name' => 'farras arkan',
-            'username' => 'farkan',
+            'username' => 'farras.arkan',
             'email' => 'farkan@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('Abc1234567'),
             'role_id' => 2,
-            'pricing_tier_id' => 2,
+            'subscription_id' => 3,
         ]);
 
         User::create([
@@ -67,7 +60,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('Abc1234567'),
             'role_id' => 1,
-            'pricing_tier_id' => 1,
+            'subscription_id' => 3,
         ]);
         
         infoConsultant::create([
@@ -96,7 +89,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProvincesTableSeeder::class);
         $this->call(CitiesTableSeeder::class);
         $this->call(ConsultantSpecialistsTableSeeder::class);
-        $this->call(RolesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
     }
 }

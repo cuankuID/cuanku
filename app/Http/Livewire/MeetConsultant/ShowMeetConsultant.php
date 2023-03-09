@@ -29,9 +29,8 @@ class ShowMeetConsultant extends Component
 
     public function render()
     { 
-        $period = CarbonPeriod::create(Carbon::now(), Carbon::now()->add(6, 'day'));
+        $period = CarbonPeriod::create(Carbon::now()->add(2, 'day'), Carbon::now()->add(8, 'day'));
         $period->locale('id_ID');
-        // dd($period);
 
         $dateSelect = Carbon::create($this->date)->format('l');
 
@@ -53,18 +52,18 @@ class ShowMeetConsultant extends Component
     public function save()
     {
         $validatedData = $this->validate([
-            'date' => ['required', 'date', 'after_or_equal:'.Carbon::now()],
+            'date' => ['required', 'date', 'after_or_equal:'.Carbon::now()->add(2, 'day')->toDateString()],
         ]);
 
+        $validatedData['order_id'] = Str::uuid()->toString();
         $validatedData['date'] = Carbon::parse($this->date . ' ' . $this->time);
         $validatedData['due_date'] = Carbon::parse(Carbon::now())->add(1, 'day')->toDateTimeString();
-        $validatedData['no_order'] = Str::random(10);
         $validatedData['consultant_id'] = $this->infoConsultant->consultant_id;
         $validatedData['customer_id'] = auth()->user()->id;
         $validatedData['price'] = $this->infoConsultant->price;
         
         MeetConsultationOrder::create($validatedData);
 
-        return redirect()->to(route('index.activity'));
+        return redirect()->to(route('index.meet.cart'));
     }
 }

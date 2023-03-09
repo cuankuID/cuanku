@@ -5,7 +5,7 @@
 
             <h2 class="section-title">Aktitivitas Pesanan</h2>
             <p class="section-lead">
-                Disini anda bisa melihat semua list pesanan yang telah dibuatw beserta status dan infonya!
+                Disini anda bisa melihat semua list pesanan yang telah dibuat beserta status dan infonya!
             </p>
 
             <div class="row">
@@ -41,7 +41,7 @@
                                                     <h4 class="text-dark"><strong>Konsultan</strong> : <span></span>{{ $meetConsultationOrder->consultant->name }}</h4>
                                                     </div>
                                                     <div class="ml-3">
-                                                        <a href="" class="btn btn-sm btn-info"><i class="fas fa-search"></i></a>
+                                                        {{-- <a href="" class="btn btn-sm btn-info"><i class="fas fa-search"></i></a> --}}
                                                     </div>
                                                     <div class="card-header-action">
                                                         <div class="dropdown">
@@ -76,6 +76,10 @@
                                                             </p>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="btn btn-sm btn-info">Cara Pembayaran</div>
+                                                    <div class="btn btn-sm btn-primary">Upload Bukti Pembayaran</div>
                                                 </div>
                                             </div>
                                             @endforeach

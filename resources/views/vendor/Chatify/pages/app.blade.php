@@ -5,22 +5,22 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
+                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">CUANKU CHAT</span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
-                    <a href="#"><i class="fas fa-cog settings-btn"></i></a>
+                    {{-- <a href="#"><i class="fas fa-cog settings-btn"></i></a> --}}
                     <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
                 </nav>
             </nav>
             {{-- Search input --}}
-            <input type="text" class="messenger-search" placeholder="Search" />
+            {{-- <input type="text" class="messenger-search" placeholder="Search" /> --}}
             {{-- Tabs --}}
-            <div class="messenger-listView-tabs">
+            {{-- <div class="messenger-listView-tabs">
                 <a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> People</a>
                 <a href="#" @if($type == 'group') class="active-tab" @endif data-view="groups">
                     <span class="fas fa-users"></span> Groups</a>
-            </div>
+            </div> --}}
         </div>
         {{-- tabs and lists --}}
         <div class="m-body contacts-container">
@@ -76,19 +76,20 @@
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                    <a href="/"><i class="fas fa-home"></i></a>
+                    {{-- <a href="/"><i class="fas fa-home"></i></a> --}}
                     <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
                 </nav>
             </nav>
         </div>
-        {{-- Internet connection --}}
-        <div class="internet-connection">
-            <span class="ic-connected">Connected</span>
-            <span class="ic-connecting">Connecting...</span>
-            <span class="ic-noInternet">No internet access</span>
-        </div>
+
         {{-- Messaging area --}}
         <div class="m-body messages-container app-scroll">
+             {{-- Internet connection --}}
+            <div class="internet-connection">
+                <span class="ic-connected">Connected</span>
+                <span class="ic-connecting">Connecting...</span>
+                <span class="ic-noInternet">No internet access</span>
+            </div>
             <div class="messages">
                 <p class="message-hint center-el"><span>Please select a chat to start messaging</span></p>
             </div>
@@ -104,9 +105,10 @@
                     </p>
                 </div>
             </div>
-            {{-- Send Message Form --}}
-            @include('Chatify::layouts.sendForm')
+
         </div>
+        {{-- Send Message Form --}}
+        @include('Chatify::layouts.sendForm')
     </div>
     {{-- ---------------------- Info side ---------------------- --}}
     <div class="messenger-infoView app-scroll">

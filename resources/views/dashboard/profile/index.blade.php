@@ -35,6 +35,21 @@
                 <div class="profile-widget-description">
                     <div class="row">
                         <div class="col-3 col-md-3">
+                            <p><b> Subscription </b></p>            
+                        </div>
+                        <div class="col-9 col-md-9">: 
+                            @if (auth()->user()->subscription_id == null)                   
+                            @elseif (auth()->user()->subscription->name == 'Silver')
+                            <span class="badge badge-light">{{ auth()->user()->subscription->name }}</span>                    
+                            @elseif (auth()->user()->subscription->name == 'Gold')
+                            <span class="badge badge-warning">{{ auth()->user()->subscription->name }}</span>
+                            @elseif (auth()->user()->subscription->name == 'Platinum')
+                            <span class="badge badge-info">{{ auth()->user()->subscription->name }}</span>
+                            @endif            
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3 col-md-3">
                             <p><b> Username </b></p>
                             <p><b> Email </b></p>            
                         </div>
@@ -46,11 +61,13 @@
                 </div>
 
                 <div class="card-footer text-center">
+                    @if (auth()->user()->google_id == null)
                     <a href="/dashboard/profile/reset-password/{{ auth()->user()->username }}" class="btn btn-primary">Change Password</a>
+                    @endif
                 </div>
             </div>
             </div>
-            <div class="col-12 col-md-12 col-lg-7">
+            {{-- <div class="col-12 col-md-12 col-lg-7">
             <div class="card">
                 <form action="/dashboard/profile/{{ auth()->user()->username }}" method="post">
                     @method('put')
@@ -98,7 +115,7 @@
                 </div>
                 </form>
             </div>
-            </div>
+            </div> --}}
         </div>
         </div>
     </section>

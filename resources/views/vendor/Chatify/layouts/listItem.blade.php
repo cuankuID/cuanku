@@ -1,21 +1,19 @@
 {{-- -------------------- Saved Messages -------------------- --}}
-@if($get == 'saved')
-    <table class="messenger-list-item m-li-divider" data-contact="{{ Auth::user()->id }}">
+{{-- @if($get == 'saved') --}}
+    {{-- <table class="messenger-list-item m-li-divider" data-contact="{{ Auth::user()->id }}">
         <tr data-action="0">
-            {{-- Avatar side --}}
             <td>
             <div class="avatar av-m" style="background-color: #d9efff; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <span class="far fa-bookmark" style="font-size: 22px; color: #68a5ff;"></span>
             </div>
             </td>
-            {{-- center side --}}
             <td>
                 <p data-id="{{ Auth::user()->id }}" data-type="user">Saved Messages <span>You</span></p>
                 <span>Save messages secretly</span>
             </td>
         </tr>
-    </table>
-@endif
+    </table> --}}
+{{-- @endif --}}
 
 {{-- -------------------- All users/group list -------------------- --}}
 @if($get == 'users')

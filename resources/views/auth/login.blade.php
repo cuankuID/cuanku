@@ -72,12 +72,12 @@
                         @enderror
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <div class="custom-control custom-checkbox">
                         <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
                         <label class="custom-control-label" for="remember-me">Ingat Akun</label>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
@@ -85,21 +85,21 @@
                         </button>
                     </div>
                     </form>
-                    {{-- <div class="text-center mt-4 mb-3">
+                    <div class="text-center mt-4 mb-3">
                     <div class="text-job text-muted">Login With Social</div>
                     </div>
-                    <div class="row sm-gutters">
-                    <div class="col-6">
-                        <a class="btn btn-block btn-social btn-facebook">
-                        <span class="fab fa-facebook"></span> Facebook
+                    <div class="row sm-gutters mb-2">
+                    <div class="col-12">
+                        <a href="{{route('google.auth')}}" class="btn btn-block btn-social btn-google">
+                        <span class="fab fa-google"></span> Login with Google
                         </a>
                     </div>
-                    <div class="col-6">
+                    {{-- <div class="col-6">
                         <a class="btn btn-block btn-social btn-twitter">
                         <span class="fab fa-twitter"></span> Twitter
                         </a>
-                    </div>
                     </div> --}}
+                    </div>
                     <div class="text-muted text-center">
                         Belum punya akun? <a href="{{ route('register.index') }}"> Daftar Sekarang</a>
                     </div>

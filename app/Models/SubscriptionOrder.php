@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
-class MeetConsultationOrder extends Model
+class SubscriptionOrder extends Model
 {
     use HasFactory;
 
@@ -13,19 +14,14 @@ class MeetConsultationOrder extends Model
         'id'
     ];
 
-    protected $with = [
-        'customer',
-        'consultant',
-    ];
-
-    public function customer()
+    public function subscription()
     {
-        return $this->belongsTo(User::class, 'customer_id');
+        return $this->belongsTo(Subscription::class);
     }
-
-    public function consultant()
+    
+    public function user()
     {
-        return $this->belongsTo(User::class, 'consultant_id');
+        return $this->belongsTo(User::class);
     }
 
     public function scopeFilter($query, array $filters)

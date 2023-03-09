@@ -22,11 +22,12 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
+            $table->string('google_id')->nullable();
             $table->boolean('status')->default(1);
-            $table->foreignId('role_id')->default(1);
-            $table->foreignId('pricing_tier_id')->default(1);
-            $table->string('access_chat_id')->default(0);
+            $table->foreignId('role_id')->default(1)->constrained('roles');
+            $table->foreignId('subscription_id')->nullable()->constrained('subscriptions');
+            // $table->string('access_chat_id')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -18,6 +18,7 @@ class CreateMeetConsultationSchedulesTable extends Migration
             $table->foreignId('consultant_id');
             $table->string('day');
             $table->string('time');
+            $table->enum('status', ['booked', 'available'])->default('available');
             $table->timestamps();
         });
     }

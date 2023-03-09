@@ -46,6 +46,11 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
         return $this->belongsTo(Role::class);
     }
 
+    public function subscription()
+    {
+        return $this->belongsTo(Subscription::class);
+    }
+
     public function forumThread()
     {
         return $this->hasMany(ForumThread::class);
