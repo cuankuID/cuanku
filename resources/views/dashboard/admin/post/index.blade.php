@@ -26,9 +26,6 @@
                             <div class="col-3">
                                 <a href="/dashboard/posts/create" class="btn btn-primary m-4"><i class="fas fa-plus"></i>  Tambah Post</a>
                             </div>
-                            <div class="col-3">
-                                <a href="/dashboard/posts/create" class="btn btn-primary m-4"><i class="fas fa-plus"></i>  Tambah Kategori Post</a>
-                            </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-md">

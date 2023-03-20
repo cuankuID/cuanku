@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0999cc256fa3079da42d3d7176b01be6",
+    "content-hash": "c6cf111a84070928833457013712c446",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2543,68 +2543,6 @@
                 }
             ],
             "time": "2022-07-24T11:55:47+00:00"
-        },
-        {
-            "name": "munafio/chatify",
-            "version": "v1.5.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/munafio/chatify.git",
-                "reference": "f5197f8e89d7d1315515d80ac2a867b5e88fabf0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/munafio/chatify/zipball/f5197f8e89d7d1315515d80ac2a867b5e88fabf0",
-                "reference": "f5197f8e89d7d1315515d80ac2a867b5e88fabf0",
-                "shasum": ""
-            },
-            "require": {
-                "pusher/pusher-php-server": "^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Chatify\\ChatifyServiceProvider"
-                    ],
-                    "aliases": {
-                        "Chatify": "Chatify\\Facades\\ChatifyMessenger"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Chatify\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Munaf A. Mahdi",
-                    "email": "munafaqeelmahdi@gmail.com"
-                }
-            ],
-            "description": "A package for Laravel PHP Framework to add a complete real-time chat system.",
-            "homepage": "https://github.com/munafio/chatify",
-            "keywords": [
-                "Messenger",
-                "chat",
-                "chatify",
-                "conversations",
-                "laravel",
-                "php",
-                "pusher",
-                "real-time",
-                "realtime"
-            ],
-            "support": {
-                "issues": "https://github.com/munafio/chatify/issues",
-                "source": "https://github.com/munafio/chatify/tree/v1.5.6"
-            },
-            "time": "2023-01-26T20:31:56+00:00"
         },
         {
             "name": "nesbot/carbon",

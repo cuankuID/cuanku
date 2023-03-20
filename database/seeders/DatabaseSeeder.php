@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
-use App\Models\User;
 use App\Models\Post;
-use App\Models\Category;
 use App\Models\Role;
 use App\Models\Team;
-use App\Models\OrderConsultation;
-use App\Models\ConsultantOffice;
+use App\Models\User;
+use App\Models\Category;
 use App\Models\ForumThread;
-use App\Models\InfoConsultant;
 use App\Models\PricingTier;
+use Faker\Factory as Faker;
+use App\Models\InfoConsultant;
+use Illuminate\Database\Seeder;
+use App\Models\ConsultantOffice;
+use App\Models\OrderConsultation;
 
 
 class DatabaseSeeder extends Seeder
@@ -76,16 +76,13 @@ class DatabaseSeeder extends Seeder
             'biography' => '<p>' . implode('<p></p>', $faker->paragraphs(mt_rand(3,6))) . '</p>'
         ]);
 
-        User::factory(20)->has(infoConsultant::factory())->create();
+        User::factory(10)->has(infoConsultant::factory())->create();
 
-        // Consultant::factory(10)->create();
-
-        Post::factory(10)->create();
-
-        ConsultantOffice::factory(20)->create();
+        ConsultantOffice::factory(10)->create();
 
         // $this->call(UsersTableSeeder::class);
         $this->call(TeamsTableSeeder::class);
+        $this->call(PostsTableSeeder::class);
         $this->call(ProvincesTableSeeder::class);
         $this->call(CitiesTableSeeder::class);
         $this->call(ConsultantSpecialistsTableSeeder::class);

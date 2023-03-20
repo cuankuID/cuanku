@@ -29,8 +29,8 @@ class TeamsTableSeeder extends Seeder
                 'facebook' => NULL,
                 'instagram' => NULL,
                 'linkedin' => 'https://www.linkedin.com/in/intancahya/',
-                'created_at' => '2022-09-09 13:33:10',
-                'updated_at' => '2022-09-09 13:33:10',
+                'created_at' => '2022-09-09 06:33:10',
+                'updated_at' => '2022-09-09 06:33:10',
             ),
             1 => 
             array (
@@ -42,8 +42,8 @@ class TeamsTableSeeder extends Seeder
                 'facebook' => NULL,
                 'instagram' => NULL,
                 'linkedin' => 'https://www.linkedin.com/in/sahdewibunga/',
-                'created_at' => '2022-09-09 13:35:35',
-                'updated_at' => '2022-09-09 13:35:35',
+                'created_at' => '2022-09-09 06:35:35',
+                'updated_at' => '2022-09-09 06:35:35',
             ),
             2 => 
             array (
@@ -55,34 +55,21 @@ class TeamsTableSeeder extends Seeder
                 'facebook' => NULL,
                 'instagram' => NULL,
                 'linkedin' => 'https://www.linkedin.com/in/tjut-aurel-azzahra-5427741bb/',
-                'created_at' => '2022-09-09 13:36:56',
-                'updated_at' => '2022-09-09 13:36:56',
+                'created_at' => '2022-09-09 06:36:56',
+                'updated_at' => '2022-09-09 06:36:56',
             ),
             3 => 
             array (
-                'id' => 4,
-                'name' => 'Farras Arkan Isnaini J.',
-                'position' => 'Website Developer',
-                'image' => 'team-images/GyJ7pAzs7jutdweGUKJWsz8auo0Cx80ob0HYTs7p.png',
-                'email' => 'farras.arkan@gmail.com',
-                'facebook' => NULL,
-                'instagram' => NULL,
-                'linkedin' => 'https://www.linkedin.com/in/farrasarkan/',
-                'created_at' => '2022-09-09 13:37:44',
-                'updated_at' => '2022-09-09 13:37:44',
-            ),
-            4 => 
-            array (
-                'id' => 5,
-                'name' => 'M. Ardhana Gusti Syahputra',
-                'position' => 'Mobile Developer',
-                'image' => 'team-images/vMzFLCF7iBYpQdDcIiSGXbwuHZS8qKlEey1MqPOS.png',
+                'id' => 6,
+                'name' => 'Irenea Gendis',
+                'position' => 'Chief Marketing Officer',
+                'image' => 'team-images/nxBK0eaaxMqcPypJrQSEELiIjkNOMRcZ95FN6xGQ.png',
                 'email' => NULL,
                 'facebook' => NULL,
                 'instagram' => NULL,
-                'linkedin' => 'https://www.linkedin.com/in/muhammad-ardhana-a211a6214/',
-                'created_at' => '2022-09-09 13:38:43',
-                'updated_at' => '2022-09-09 13:38:43',
+                'linkedin' => 'https://www.linkedin.com/ireneagendis',
+                'created_at' => '2022-12-10 01:28:13',
+                'updated_at' => '2022-12-10 01:28:13',
             ),
         ));
         
