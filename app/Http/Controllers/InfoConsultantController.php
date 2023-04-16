@@ -61,14 +61,14 @@ class InfoConsultantController extends Controller
         return response()->json(['message' => 'Consultant Added Successfully']);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        return InfoConsultant::with('meetConsultationSchedule')->where("id", $id)->get();
+        return InfoConsultant::with('meetConsultationSchedule')->where("slug", $slug)->get();
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        $infoConsultant = InfoConsultant::find($id);
+        $infoConsultant = InfoConsultant::where("slug", $slug)->first();
         $validator = Validator::make($request->all(), [
             'photo' => 'mimes:jpeg,png,svg,jpg',
             'province' => 'required',
@@ -105,9 +105,9 @@ class InfoConsultantController extends Controller
         return response()->json(['message' => 'Consultant Updated Successfully']);
     }
 
-    public function destroy($id)
+    public function destroy($slug)
     {
-        $infoConsultant = InfoConsultant::Find($id);
+        $infoConsultant = InfoConsultant::where("slug", $slug)->first();
         if ($infoConsultant->photo) {
             Storage::delete($infoConsultant->photo);    
         }

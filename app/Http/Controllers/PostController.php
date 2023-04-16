@@ -35,8 +35,8 @@ class PostController extends Controller
 
         $coverName = null;
         
-        if($request->file('cover')){
-            $coverName = $request->file('cover')->store('post-images');
+        if($request->file('image_post')){
+            $coverName = $request->file('image_post')->store('post-images');
         }
 
         Post::Create([
@@ -50,14 +50,14 @@ class PostController extends Controller
         return response()->json(['message' => 'Article Added Successfully']);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        return Post::with('user')->where('id', $id)->get();
+        return Post::with('user')->where('slug', $slug)->get();
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        $article = Post::find($id);
+        $article = Post::where('slug', $slug)->first();
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'image_post' => 'mimes:jpeg,png,svg,jpg',
@@ -68,27 +68,27 @@ class PostController extends Controller
             return response()->json($validator->getMessageBag());
         }
 
-        $coverName = $article->cover;
+        $coverName = $article->image_post;
         
-        if($request->file('cover')){
-            Storage::delete($article->cover);
-            $coverName = $request->file('cover')->store('post-images');
+        if($request->file('image_post')){
+            Storage::delete($article->image_post);
+            $coverName = $request->file('image_post')->store('post-images');
         }
 
         $article->update([
             'title' => $request->title,
             'image_post' => $coverName,
-            'body' => $request->desc,
+            'body' => $request->body,
         ]);
 
         return response()->json(['message' => 'Article Updated Successfully']);
     }
 
-    public function destroy($id)
+    public function destroy($slug)
     {
-        $article = Article::Find($id);
-        if ($article->cover) {
-            Storage::delete($article->cover);    
+        $article = Post::where('slug', $slug)->first();
+        if ($article->image_post) {
+            Storage::delete($article->image_post);    
         }
         $article->delete();
         return response()->json(['message' => 'Article Deleted Successfully']);

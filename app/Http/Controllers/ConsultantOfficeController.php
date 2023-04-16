@@ -64,14 +64,14 @@ class ConsultantOfficeController extends Controller
         return response()->json(['message' => 'Office Added Successfully']);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        return ConsultantOffice::with('infoConsultant')->where("id", $id)->get();
+        return ConsultantOffice::with('infoConsultant')->where("slug", $slug)->get();
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        $consultantOffice = ConsultantOffice::find($id);
+        $consultantOffice = ConsultantOffice::where("slug", $slug)->first();
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'image' => 'mimes:jpeg,png,svg,jpg',
@@ -110,9 +110,9 @@ class ConsultantOfficeController extends Controller
         return response()->json(['message' => 'Office Updated Successfully']);
     }
 
-    public function destroy($id)
+    public function destroy($slug)
     {
-        $consultantOffice = ConsultantOffice::Find($id);
+        $consultantOffice = ConsultantOffice::where("slug", $slug)->first();
         if ($consultantOffice->image) {
             Storage::delete($consultantOffice->image);    
         }

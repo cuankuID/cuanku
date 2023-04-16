@@ -67,18 +67,6 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword,
         'email_verified_at' => 'datetime',
     ];
 
-    public function scopeFilter($query, array $filters)
-    {
-        // dd($filters['search']);
-        $query->when($filters['search'] ?? false, function($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('username', 'like', '%' . $search . '%')
-                        ->orWhereHas('role', function($query) {
-                            return $query->where('name', 'like', '%' . request()->get('search') . '%');
-                        });
-        });
-    }
-
     public function getJWTIdentifier()
     {
         return $this->getKey();
