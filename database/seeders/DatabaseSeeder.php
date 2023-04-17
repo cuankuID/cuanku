@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
-use App\Models\User;
 use App\Models\Post;
-use App\Models\Category;
 use App\Models\Role;
 use App\Models\Team;
-use App\Models\OrderConsultation;
-use App\Models\ConsultantOffice;
+use App\Models\User;
+use App\Models\Category;
 use App\Models\ForumThread;
-use App\Models\InfoConsultant;
 use App\Models\PricingTier;
+use Faker\Factory as Faker;
+use App\Models\InfoConsultant;
+use Illuminate\Database\Seeder;
+use App\Models\ConsultantOffice;
+use App\Models\OrderConsultation;
 
 
 class DatabaseSeeder extends Seeder
@@ -27,15 +27,8 @@ class DatabaseSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        PricingTier::create([
-            'name' => 'Free',
-            'price' => '0'
-        ]);
-
-        PricingTier::create([
-            'name' => 'Premium',
-            'price' => '50000'
-        ]);
+        $this->call(RolesTableSeeder::class);
+        $this->call(SubscriptionsTableSeeder::class);
 
         User::create([
             'uuid' => $faker->uuid(),
@@ -45,18 +38,18 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('Superadmin123'),
             'role_id' => 3,
-            'pricing_tier_id' => 2,
+            'subscription_id' => 3,
         ]);
 
         User::create([
             'uuid' => $faker->uuid(),
             'name' => 'farras arkan',
-            'username' => 'farkan',
+            'username' => 'farras.arkan',
             'email' => 'farkan@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('Abc1234567'),
             'role_id' => 2,
-            'pricing_tier_id' => 2,
+            'subscription_id' => 3,
         ]);
 
         User::create([
@@ -67,25 +60,32 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('Abc1234567'),
             'role_id' => 1,
-            'pricing_tier_id' => 1,
+            'subscription_id' => 3,
+        ]);
+        
+        infoConsultant::create([
+            'consultant_id' => 2,
+            'office_id' => 1,
+            'slug' => 'farras-arkan',
+            'province' => $faker->state(),
+            'city' => $faker->city(),
+            'full_address' => $faker->streetAddress(), 
+            'price' => '200000',
+            'specialist' => 'Konsultan Akuntansi',
+            'work_experience' => 5,
+            'biography' => '<p>' . implode('<p></p>', $faker->paragraphs(mt_rand(3,6))) . '</p>'
         ]);
 
-        User::factory(20)->has(infoConsultant::factory())->create();
+        User::factory(10)->has(infoConsultant::factory())->create();
 
-        // Consultant::factory(10)->create();
-
-        Post::factory(10)->create();
-
-        OrderConsultation::factory(10)->create();
-
-        ConsultantOffice::factory(20)->create();
+        ConsultantOffice::factory(10)->create();
 
         // $this->call(UsersTableSeeder::class);
         $this->call(TeamsTableSeeder::class);
+        $this->call(PostsTableSeeder::class);
         $this->call(ProvincesTableSeeder::class);
         $this->call(CitiesTableSeeder::class);
         $this->call(ConsultantSpecialistsTableSeeder::class);
-        $this->call(RolesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
     }
 }

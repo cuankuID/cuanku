@@ -19,7 +19,12 @@ class CreateMeetConsultationOrdersTable extends Migration
             $table->foreignId('consultant_id');
             $table->foreignId('customer_id');
             $table->dateTime('date');
-            $table->enum('status', ['Menunggu Pembayaran', 'Diterima'])->default('Menunggu Pembayaran');
+            $table->integer('price');
+            $table->enum('status', ['Menunggu Pembayaran', 'Menunggu Konfirmasi', 'Ditolak', 'Diterima'])->default('Menunggu Pembayaran');
+            $table->enum('method', ['BCA', 'BNI', 'BRIVA', 'Mandiri']);
+            $table->enum('packet', ['Free', 'Silver', 'Gold', 'Platinum']);
+            $table->string('information')->nullable();
+            $table->string('payment_proof')->nullable();
             $table->timestamps();
         });
     }

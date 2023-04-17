@@ -19,16 +19,13 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->integer("nik")->nullable();
             $table->string('address')->nullable();
-            $table->float('latitude')->nullable();
-            $table->float('longitude')->nullable();
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('google_id')->nullable();
             $table->boolean('status')->default(1);
             $table->foreignId('role_id')->default(1);
-            $table->foreignId('pricing_tier_id')->default(1);
-            $table->string('access_chat_id')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

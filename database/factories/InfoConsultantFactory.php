@@ -5,20 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class InfoConsultantFactory extends Factory
-{
-    // $table->foreignId('consultant_id');
-    // $table->foreignId('office_id')->nullable();
-    // $table->string('slug');
-    // $table->string('photo')->nullable();
-    // $table->string('province');
-    // $table->string('city');
-    // $table->string('full_address')->nullable();
-    // $table->string('price');
-    // $table->string('specialist');
-    // $table->string('work_experience');
-    // $table->string('biography')->nullable();
-
-    
+{    
     /**
      * Define the model's default state.
      *
