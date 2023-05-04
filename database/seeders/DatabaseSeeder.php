@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
         $faker = Faker::create();
 
         $this->call(RolesTableSeeder::class);
-        $this->call(SubscriptionsTableSeeder::class);
 
         User::create([
             'uuid' => $faker->uuid(),
@@ -38,7 +37,6 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('Superadmin123'),
             'role_id' => 3,
-            'subscription_id' => 3,
         ]);
 
         User::create([
@@ -49,7 +47,6 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('Abc1234567'),
             'role_id' => 2,
-            'subscription_id' => 3,
         ]);
 
         User::create([
@@ -60,7 +57,6 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('Abc1234567'),
             'role_id' => 1,
-            'subscription_id' => 3,
         ]);
         
         infoConsultant::create([
