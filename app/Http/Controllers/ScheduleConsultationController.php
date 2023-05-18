@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\MeetConsultationSchedule;
+use App\Models\InfoConsultant;
+use App\Models\ScheduleConsultation;
 use Illuminate\Support\Facades\Validator;
 
-class MeetConsultantScheduleController extends Controller
+class ScheduleConsultationController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth:api');
     }
     
-    public function index(Request $request, $id)
+    public function index(Request $request, $slug)
     {
-        return MeetConsultationSchedule::select('time')->where('consultant_id', $id)->where('day', "LIKE" , "%".$request->day."%")->get();
+        $consultant = InfoConsultant::where("slug", $slug)->first();
+        return ScheduleConsultation::select('time')->where('consultant_id', $consultant->id)->where('day', "LIKE" , "%".$request->day."%")->get();
     }
 
     public function store(Request $request)
@@ -30,7 +32,7 @@ class MeetConsultantScheduleController extends Controller
             return response()->json($validator->getMessageBag());
         }
 
-        MeetConsultationSchedule::Create([
+        ScheduleConsultation::Create([
             'day' => $request->day,
             'time' => $request->time,
             'consultant_id' => $user->infoConsultant->id,
@@ -41,7 +43,7 @@ class MeetConsultantScheduleController extends Controller
 
     public function update(Request $request, $id)
     {
-        $meetConsultationSchedule = MeetConsultationSchedule::find($id);
+        $meetConsultationSchedule = ScheduleConsultation::find($id);
         $validator = Validator::make($request->all(), [
             'day' => 'required',
             'time' => 'required',
@@ -61,7 +63,7 @@ class MeetConsultantScheduleController extends Controller
 
     public function destroy($id)
     {
-        MeetConsultationSchedule::find($id)->delete();
+        ScheduleConsultation::find($id)->delete();
         return response()->json(['message' => 'Schedule Deleted Successfully']);
     }
 }

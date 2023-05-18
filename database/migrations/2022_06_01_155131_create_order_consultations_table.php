@@ -15,10 +15,11 @@ class CreateOrderConsultationsTable extends Migration
     {
         Schema::create('order_consultations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('consultant_id')->nullable()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('status_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('category_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('consultant_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('status_id')->constrained('status_consultations')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('category_consultations')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('method_id')->constrained('method_consultations')->onUpdate('cascade')->onDelete('cascade');
             $table->string('no_order')->unique();
             $table->datetime('schedule');
             $table->text('problem')->nullable();

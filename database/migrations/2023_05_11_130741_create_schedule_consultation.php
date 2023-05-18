@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticleTable extends Migration
+class CreateScheduleConsultation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateArticleTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('schedule_consultations', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('cover')->nullable();
-            $table->string('desc');
-            $table->foreignId('user_id');
+            $table->foreignId('consultant_id')->constrained('info_consultants')->onUpdate('cascade')->onDelete('cascade');;
+            $table->string('day');
+            $table->string('time');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateArticleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('schedule_consultations');
     }
 }

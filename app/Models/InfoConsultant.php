@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\ConsultantOffice;
+use App\Models\ScheduleConsultation;
+use Illuminate\Database\Eloquent\Model;
 use App\Models\LiveConsultationSchedule;
 use App\Models\MeetConsultationSchedule;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class InfoConsultant extends Model
 {
@@ -20,7 +21,6 @@ class InfoConsultant extends Model
     protected $with = [
         'user',
         'consultantOffice',
-        'liveConsultationSchedule'
     ];
 
     public function user()
@@ -33,13 +33,8 @@ class InfoConsultant extends Model
         return $this->belongsTo(ConsultantOffice::class, 'office_id');
     }
 
-    public function meetConsultationSchedule()
+    public function scheduleConsultation()
     {
-        return $this->hasMany(MeetConsultationSchedule::class, 'consultant_id', 'consultant_id');
-    }
-
-    public function liveConsultationSchedule()
-    {
-        return $this->hasMany(LiveConsultationSchedule::class, 'consultant_id', 'consultant_id');
+        return $this->hasMany(ScheduleConsultation::class, 'consultant_id');
     }
 }

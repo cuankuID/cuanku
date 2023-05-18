@@ -15,8 +15,8 @@ class CreateInfoConsultantsTable extends Migration
     {
         Schema::create('info_consultants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('consultant_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('office_id');
+            $table->foreignId('consultant_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('office_id')->constrained('consultant_offices')->onUpdate('cascade')->onDelete('cascade');
             $table->string('slug');
             $table->string('photo')->nullable();
             $table->string('province');

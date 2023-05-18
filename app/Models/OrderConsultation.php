@@ -2,24 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\MethodConsultation;
+use App\Models\StatusConsultation;
+use App\Models\CategoryConsultation;
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class OrderConsultation extends Model
 {
     use HasFactory;
 
+    protected $table = 'order_consultations';
+
     protected $guarded = [
         'id'
     ];
 
-    protected $with = [
-        'user',
-        'consultant',
-        'statusConsultation',
-        'categoryConsultation'
-    ];
+    // protected $with = [
+    //     'user',
+    //     'consultant',
+    //     'statusConsultation',
+    //     'categoryConsultation'
+    // ];
 
     public function user()
     {
@@ -41,22 +46,8 @@ class OrderConsultation extends Model
         return $this->belongsTo(CategoryConsultation::class, 'category_id');
     }
 
-    public function scopeFilter($query, array $filters)
+    public function methodConsultation()
     {
-        // dd($filters['search']);
-        $query->when($filters['search'] ?? false, function($query, $search) {
-            return $query->where('schedule', 'like', '%' . $search . '%')
-                        ->orWhereHas('user', function($query) {
-                            return $query->where('name', 'like', '%' . request()->get('search') . '%');
-                        })
-                        ->orWhereHas('categoryConsultation', function($query) {
-                            return $query->where('name', 'like', '%' . request()->get('search') . '%');
-                        });
-        });
-    }
-
-    public function getScheduleAttribute($datetime)
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $datetime)->format('d-m-Y (H:i)');
+        return $this->belongsTo(MethodConsultation::class, 'method_id');
     }
 }

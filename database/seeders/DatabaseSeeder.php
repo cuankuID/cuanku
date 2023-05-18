@@ -14,6 +14,17 @@ use App\Models\InfoConsultant;
 use Illuminate\Database\Seeder;
 use App\Models\ConsultantOffice;
 use App\Models\OrderConsultation;
+use Database\Seeders\PostsTableSeeder;
+use Database\Seeders\RolesTableSeeder;
+use Database\Seeders\TeamsTableSeeder;
+use Database\Seeders\UsersTableSeeder;
+use Database\Seeders\CitiesTableSeeder;
+use Database\Seeders\ProvincesTableSeeder;
+use Database\Seeders\CategoriesTableSeeder;
+use Database\Seeders\MethodConsultationTableSeeder;
+use Database\Seeders\StatusConsultationTableSeeder;
+use Database\Seeders\CategoryConsultationTableSeeder;
+use Database\Seeders\ConsultantSpecialistsTableSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -58,8 +69,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('Abc1234567'),
             'role_id' => 1,
         ]);
+
+        ConsultantOffice::factory(10)->create();
         
-        infoConsultant::create([
+        InfoConsultant::create([
             'consultant_id' => 2,
             'office_id' => 1,
             'slug' => 'farras-arkan',
@@ -72,16 +85,19 @@ class DatabaseSeeder extends Seeder
             'biography' => '<p>' . implode('<p></p>', $faker->paragraphs(mt_rand(3,6))) . '</p>'
         ]);
 
-        User::factory(10)->has(infoConsultant::factory())->create();
-
-        ConsultantOffice::factory(10)->create();
+        User::factory(10)->has(InfoConsultant::factory())->create();
 
         // $this->call(UsersTableSeeder::class);
-        $this->call(TeamsTableSeeder::class);
-        $this->call(PostsTableSeeder::class);
-        $this->call(ProvincesTableSeeder::class);
-        $this->call(CitiesTableSeeder::class);
-        $this->call(ConsultantSpecialistsTableSeeder::class);
-        $this->call(CategoriesTableSeeder::class);
+        $this->call([
+            TeamsTableSeeder::class,
+            CategoriesTableSeeder::class,
+            PostsTableSeeder::class,
+            ProvincesTableSeeder::class,
+            CitiesTableSeeder::class, 
+            ConsultantSpecialistsTableSeeder::class,
+            StatusConsultationTableSeeder::class,
+            CategoryConsultationTableSeeder::class,
+            MethodConsultationTableSeeder::class,
+        ]);
     }
 }

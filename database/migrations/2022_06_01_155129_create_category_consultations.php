@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLiveConsultationSchedulesTable extends Migration
+class CreateCategoryConsultations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateLiveConsultationSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('live_consultation_schedules', function (Blueprint $table) {
+        Schema::create('category_consultations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('consultant_id');
-            $table->string('day');
-            $table->string('start_time');
-            $table->string('end_time');
+            $table->string('name');
+            $table->integer('price');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateLiveConsultationSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('live_consultation_schedules');
+        Schema::dropIfExists('category_consultations');
     }
 }

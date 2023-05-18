@@ -8,7 +8,10 @@ use App\Http\Controllers\ChMessageController;
 use App\Http\Controllers\VerifyEmailController;
 use App\Http\Controllers\InfoConsultantController;
 use App\Http\Controllers\ConsultantOfficeController;
+use App\Http\Controllers\OrderConsultationController;
+use App\Http\Controllers\MethodConsultationController;
 use App\Http\Controllers\MeetConsultantOrderController;
+use App\Http\Controllers\ScheduleConsultationController;
 use App\Http\Controllers\MeetConsultantScheduleController;
 
 
@@ -34,9 +37,10 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::apiResource('article', PostController::class);
     Route::apiResource('office', ConsultantOfficeController::class);
     Route::apiResource('consultant', InfoConsultantController::class);
-    Route::apiResource('consultant-schedule', MeetConsultantScheduleController::class)->except(['index', 'show']);
-    Route::get('consultant-schedule/{id}', [MeetConsultantScheduleController::class, 'index']);
-    Route::apiResource('consultant-order', MeetConsultantOrderController::class);
-    Route::put('consultant-order/{id}', [MeetConsultantOrderController::class, 'paid']);
+    Route::apiResource('consultant-schedule', ScheduleConsultationController::class)->except(['index', 'show']);
+    Route::get('consultant-schedule/{id}', [ScheduleConsultationController::class, 'index']);
+    Route::apiResource('consultant-order', OrderConsultationController::class);
+    Route::put('consultant-order/{id}', [OrderConsultationController::class, 'paid']);
+    Route::apiResource('consultant-method', MethodConsultationController::class);
     Route::apiResource('chat', ChMessageController::class);
 });

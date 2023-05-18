@@ -63,7 +63,7 @@ class InfoConsultantController extends Controller
 
     public function show($slug)
     {
-        return InfoConsultant::with('meetConsultationSchedule')->where("slug", $slug)->get();
+        return InfoConsultant::with('scheduleConsultation')->where("slug", $slug)->get();
     }
 
     public function update(Request $request, $slug)
